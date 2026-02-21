@@ -983,7 +983,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 [data-theme="light"] .cta-mobile {
   background: rgba(255,255,255,.90);
 }
-.cta-mobile .btn { flex: 1; height: 48px; }
+.cta-mobile .btn { flex: 1; height: 48px; justify-content: center; font-size: 15px; }
 
 @media (max-width: 980px) {
   .back-to-top { right: 16px; bottom: 140px; }
