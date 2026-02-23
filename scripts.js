@@ -838,7 +838,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Safety: don't leave content hidden if the observer doesn't fire (edge cases / extensions)
       setTimeout(function () {
         revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
-      }, 2000);
+      }, 8000);
     } else {
       revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
     }
@@ -850,14 +850,14 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-     11. PERSONA FILTER (Services Menu)
+     11. PERSONA FILTER (Reference Pricing)
      ═══════════════════════════════════════════════════════════════ */
 
   var personaFilter = document.getElementById('personaFilter');
   if (personaFilter) {
     var personaBtns = personaFilter.querySelectorAll('.persona-btn');
     var menuGroups = document.querySelectorAll('#menuContent .menu-group');
-    var menuItems = document.querySelectorAll('#menuContent .menu-item');
+    var menuItems = document.querySelectorAll('#menuContent .menu-item, #menuContent .menu-item-help');
 
     personaBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -869,8 +869,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Filter groups
         menuGroups.forEach(function (group) {
-          var personas = group.getAttribute('data-personas') || '';
-          if (persona === 'all' || personas.indexOf(persona) !== -1) {
+          var gp = group.getAttribute('data-persona') || group.getAttribute('data-personas') || '';
+          if (gp.indexOf(persona) !== -1) {
             group.classList.remove('persona-hidden');
           } else {
             group.classList.add('persona-hidden');
@@ -879,8 +879,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Filter individual items within visible groups
         menuItems.forEach(function (item) {
-          var personas = item.getAttribute('data-personas') || '';
-          if (persona === 'all' || personas.indexOf(persona) !== -1) {
+          var ip = item.getAttribute('data-persona') || item.getAttribute('data-personas') || '';
+          if (ip.indexOf(persona) !== -1) {
             item.classList.remove('persona-hidden');
           } else {
             item.classList.add('persona-hidden');
@@ -888,7 +888,56 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     });
+
+    // Trigger initial filter for the default active tab
+    var activeBtn = personaFilter.querySelector('.persona-btn.active');
+    if (activeBtn) activeBtn.click();
   }
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     11b. OPEN PLAN INTAKE — scrolls to Quick-Start and opens
+          the "Start with a Plan" walkthrough form
+     ═══════════════════════════════════════════════════════════════ */
+
+  function openPlanIntake() {
+    var qsSection = document.getElementById('quick-start');
+    if (!qsSection) return;
+    // Scroll to quick-start
+    var offset = 72;
+    var top = qsSection.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    // Expand the walkthrough card if not already expanded
+    var walkthroughCard = document.querySelector('.qs-accordion-card[data-flow="walkthrough"]');
+    if (walkthroughCard && !walkthroughCard.classList.contains('is-expanded')) {
+      var wHeader = walkthroughCard.querySelector('.qs-accordion-header');
+      if (wHeader) wHeader.click();
+    }
+    // After accordion opens, click the Next button to show the form
+    setTimeout(function () {
+      var nextBtn = walkthroughCard && walkthroughCard.querySelector('.card-next');
+      if (nextBtn) nextBtn.click();
+    }, 350);
+  }
+
+  // Asterisk buttons → open Plan intake
+  document.querySelectorAll('.menu-asterisk').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openPlanIntake();
+    });
+  });
+
+  // .open-plan-intake links → open Plan intake (also closes any open dialog first)
+  document.querySelectorAll('.open-plan-intake').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelectorAll('.dialog-overlay.active').forEach(function (d) {
+        closeDialog(d);
+      });
+      openPlanIntake();
+    });
+  });
 
 
   /* ═══════════════════════════════════════════════════════════════
@@ -1623,28 +1672,154 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Close dialog handlers
-  [termsDialog, diffDialog].forEach(function (dialog) {
-    if (!dialog) return;
+  // New dialogs
+  var contactDialog = document.getElementById('contactDialog');
+  var nextGigDialog = document.getElementById('nextGigDialog');
+  var passDetailsDialog = document.getElementById('passDetailsDialog');
 
-    // Close button
+  // Artist Pass savings breakdown (Deals)
+  function setPassBreakdown(passKey) {
+    var titleEl = document.getElementById('passDetailsTitle');
+    var boxEl = document.getElementById('passSavingsBreakdown');
+    if (!boxEl) return;
+
+    var data = {
+      starter: {
+        title: 'Starter - Savings Breakdown',
+        includedValue: '$1,025',
+        passPrice: '$750',
+        builtIn: '$275',
+        perksTotal: '$100',
+        totalPossible: '$375',
+        lines: [
+          '10 studio hours @ $80/hr = $800',
+          '1 Final Mix = $150',
+          '1 Stems export = $75'
+        ],
+        perks: [
+          'Next-Gig at $400 (normally $450) = save $50',
+          'Artist Feature at $400 (normally $450) = save $50'
+        ]
+      },
+      builder: {
+        title: 'Builder - Savings Breakdown',
+        includedValue: '$2,595',
+        passPrice: '$1,750',
+        builtIn: '$845',
+        perksTotal: '$200',
+        totalPossible: '$1,045',
+        lines: [
+          '24 studio hours @ $80/hr = $1,920',
+          '3 Final Mixes @ $150 = $450',
+          '3 Stems exports @ $75 = $225'
+        ],
+        perks: [
+          'Next-Gig at $350 (normally $450) = save $100',
+          'Artist Feature at $350 (normally $450) = save $100'
+        ]
+      },
+      headliner: {
+        title: 'Headliner - Savings Breakdown',
+        includedValue: '$5,190',
+        passPrice: '$3,495',
+        builtIn: '$1,695',
+        perksTotal: '$300',
+        totalPossible: '$1,995',
+        lines: [
+          '48 studio hours @ $80/hr = $3,840',
+          '6 Final Mixes @ $150 = $900',
+          '6 Stems exports @ $75 = $450'
+        ],
+        perks: [
+          'Additional Next-Gig at $300 (normally $450) = save $150',
+          'Artist Feature at $300 (normally $450) = save $150'
+        ]
+      }
+    };
+
+    var d = data[passKey] || data.starter;
+    if (titleEl) titleEl.textContent = 'Artist Pass Details';
+    boxEl.innerHTML =
+      '<h4 class="dialog-subtitle">' + d.title + '</h4>' +
+      '<p class="dialog-muted">How savings are calculated</p>' +
+      '<p><strong>Included retail value (a la carte): ' + d.includedValue + '</strong></p>' +
+      '<ul>' + d.lines.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+      '<p><strong>Pass price: ' + d.passPrice + '</strong><br>Built-in savings: <strong>' + d.builtIn + '</strong></p>' +
+      '<p><strong>Optional perk savings (if used)</strong></p>' +
+      '<ul>' + d.perks.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+      '<p><strong>Total possible savings with perks: ' + d.totalPossible + '</strong></p>';
+  }
+
+
+  // Generic handler: any link with data-dialog opens the named dialog
+  document.querySelectorAll('[data-dialog]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (link.getAttribute('data-dialog') === 'passDetailsDialog' && link.getAttribute('data-pass')) {
+        setPassBreakdown(link.getAttribute('data-pass'));
+      }
+      var dialogEl = document.getElementById(link.getAttribute('data-dialog'));
+      if (dialogEl) openDialog(dialogEl);
+    });
+  });
+
+  // Reach Out form — inline submit (no redirect, stay in modal)
+  var reachOutForm = document.getElementById('reachOutForm');
+  var reachOutSuccess = null;
+  if (reachOutForm && reachOutSuccess) {
+    reachOutForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(reachOutForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(function () {
+        reachOutForm.style.display = 'none';
+        reachOutSuccess.style.display = 'block';
+      }).catch(function () {
+        reachOutForm.style.display = 'none';
+        reachOutSuccess.style.display = 'block';
+      });
+    });
+  }
+
+  // Close + click-outside handlers for ALL dialogs
+  document.querySelectorAll('.dialog-overlay').forEach(function (dialog) {
     var closeBtn = dialog.querySelector('.dialog-close');
     if (closeBtn) {
-      closeBtn.addEventListener('click', function () { closeDialog(dialog); });
+      closeBtn.addEventListener('click', function () {
+        closeDialog(dialog);
+        // Reset reach-out form on close
+        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
+          reachOutForm.reset();
+          reachOutForm.style.display = 'grid';
+          reachOutSuccess.style.display = 'none';
+        }
+      });
     }
-
-    // Click outside
     dialog.addEventListener('click', function (e) {
-      if (e.target === dialog) closeDialog(dialog);
+      if (e.target === dialog) {
+        closeDialog(dialog);
+        // Reset reach-out form on click-outside close
+        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
+          reachOutForm.reset();
+          reachOutForm.style.display = 'grid';
+          reachOutSuccess.style.display = 'none';
+        }
+      }
     });
   });
 
   // ESC closes any open dialog
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      [termsDialog, diffDialog].forEach(function (dialog) {
-        if (dialog && dialog.classList.contains('active')) {
-          closeDialog(dialog);
+      document.querySelectorAll('.dialog-overlay.active').forEach(function (dialog) {
+        closeDialog(dialog);
+        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
+          reachOutForm.reset();
+          reachOutForm.style.display = 'grid';
+          reachOutSuccess.style.display = 'none';
         }
       });
     }
@@ -1652,3 +1827,70 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 }); // end DOMContentLoaded
+
+
+// reachOutForm__inlineHandler: keep modal open, show inline status, turn button green like Quick-Start
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('reachOutForm');
+  if(!form) return;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const statusBox = form.querySelector('.form-inline-status');
+  const origBtnText = submitBtn ? submitBtn.textContent : 'Send →';
+
+  const setStatus = (kind, html) => {
+    if(!statusBox) return;
+    statusBox.innerHTML = html || '';
+    statusBox.dataset.kind = kind || '';
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    setStatus('', '');
+    if(submitBtn){
+      submitBtn.disabled = true;
+      submitBtn.classList.remove('is-submitted');
+      submitBtn.textContent = 'Sending...';
+    }
+
+    try{
+      const formData = new FormData(form);
+      const body = new URLSearchParams(formData).toString();
+
+      const res = await fetch(form.getAttribute('action') || '/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+
+      if(!res.ok) throw new Error('Network response not ok');
+
+      if(submitBtn){
+        submitBtn.classList.add('is-submitted');
+        submitBtn.textContent = 'Sent ✓';
+      }
+
+      // disable fields to reduce double submits
+      form.querySelectorAll('input, select, textarea').forEach(el => {
+        if(el.type !== 'hidden') el.disabled = true;
+      });
+
+      setStatus('ok', `
+        <div class="ok">
+          <div class="tick">✓</div>
+          <div class="msg">
+            <strong>Got it.</strong> I’ll reach out soon.<br/>
+            <span style="color: rgba(255,255,255,0.62);">If it’s urgent, text me and I’ll jump on it.</span>
+          </div>
+        </div>
+      `);
+    }catch(err){
+      if(submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.textContent = origBtnText;
+      }
+      setStatus('err', `<div class="err">Something went wrong. Please try again.</div>`);
+    }
+  }, true);
+});

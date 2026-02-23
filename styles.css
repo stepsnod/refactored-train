@@ -105,7 +105,7 @@ body {
 }
 body.noscroll { overflow: hidden; }
 
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--text); text-decoration: none; }
 a:hover { color: var(--accent2); }
 
 *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -1967,8 +1967,13 @@ footer {
 
 .hero-section {
   text-align: center;
-  padding: 140px 20px 80px;
-  max-width: 800px;
+  /* Make hero fill the initial viewport so Quick-Start reveals on scroll */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 180px 24px 160px;
+  max-width: 980px;
   margin: 0 auto;
   animation: fadeInUp 0.8s ease-out;
 }
@@ -2103,7 +2108,18 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .hero-section { padding: 100px 20px 56px; }
+  .hero-section {
+  text-align: center;
+  /* Make hero fill the initial viewport so Quick-Start reveals on scroll */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 180px 24px 160px;
+  max-width: 980px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out;
+}
   .hero-primary-cta { width: 100%; padding: 16px 32px; }
 }
 
@@ -2119,17 +2135,29 @@ footer {
 
 .qs-glow {
   position: absolute;
-  top: -100px;
+  top: -140px;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(0,198,255,.12), transparent 70%);
+  width: 920px;
+  height: 260px;
+  background: radial-gradient(ellipse at center, rgba(0,198,255,0.10), rgba(0,198,255,0.00) 70%);
+  filter: blur(18px);
   pointer-events: none;
   z-index: -1;
+  opacity: 0.85;
 }
 [data-theme="light"] .qs-glow {
-  background: radial-gradient(ellipse, rgba(0,198,255,.08), transparent 70%);
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 920px;
+  height: 260px;
+  background: radial-gradient(ellipse at center, rgba(0,198,255,0.10), rgba(0,198,255,0.00) 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
 }
 
 .qs-container {
@@ -2457,6 +2485,37 @@ footer {
 }
 .menu-subtitle a:hover { color: var(--accent2); }
 
+/* Mini-banner: funnel reinforcement */
+.menu-banner {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: rgba(0,198,255,.05);
+  border: 1px solid rgba(0,198,255,.12);
+  border-radius: var(--radius);
+}
+.menu-banner-text {
+  font-size: 15px;
+  color: var(--text);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+.menu-banner-cta {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+}
+.menu-banner-cta:hover {
+  background: rgba(0,198,255,.10);
+  color: var(--text);
+}
+
 .menu-group {
   border-bottom: 1px solid var(--border);
   padding-bottom: 24px;
@@ -2491,10 +2550,8 @@ footer {
   gap: 20px;
   padding: 16px 0;
   border-bottom: 1px solid var(--border);
-  transition: background 0.2s var(--ease);
 }
 .menu-item:last-child { border-bottom: none; }
-.menu-item:hover { background: rgba(0,198,255,.03); }
 
 .menu-item-left {
   display: flex;
@@ -2514,41 +2571,100 @@ footer {
 }
 .menu-item-price {
   font-weight: 500;
-  color: var(--accent);
+  color: var(--text);
   font-size: 16px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.menu-item-featured {
-  border-left: 3px solid var(--accent);
-  padding-left: 16px;
-  margin-left: -3px;
+.menu-item-note {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
 }
 
-.menu-group-highlight {
-  background: rgba(0,198,255,.04);
-  border: 1px solid rgba(0,198,255,.15);
-  border-radius: var(--radius);
-  padding: 20px 20px 8px;
-}
-[data-theme="light"] .menu-group-highlight {
-  background: rgba(0,198,255,.06);
-  border-color: rgba(0,198,255,.20);
-}
 
-.menu-item-badge {
-  display: inline-block;
+
+.menu-banner-micro{
   font-size: 11px;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(0,198,255,.12);
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.menu-divider{
+  height: 1px;
+  background: var(--border);
+  opacity: 0.9;
+  margin: 18px 0 6px;
+}
+
+.show-more-link{
   color: var(--accent);
-  margin-left: 8px;
-  vertical-align: middle;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 400;
+}
+
+.plan-link{
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.menu-rate-save-top{
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+.menu-group-header{
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.menu-group-desc{
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Deals: savings badge + quieter details link */
+.savings-badge{
+  background: rgba(0, 198, 255, 0.10);
+  color: var(--accent);
+  border: 1px solid rgba(0, 198, 255, 0.20);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.menu-deal-perks{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+}
+
+.deal-details-link{
+  color: var(--muted2);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
+}
+
+.deal-details-link:hover{
+  color: var(--accent);
 }
 
 /* Rate pills */
@@ -2571,10 +2687,6 @@ footer {
   transition: all 0.25s ease;
   flex: 1;
   min-width: 120px;
-}
-.menu-rate-pill:hover {
-  border-color: var(--border2);
-  background: var(--card);
 }
 .menu-rate-pill .menu-rate-label {
   font-size: 12px;
@@ -2600,12 +2712,106 @@ footer {
   margin-top: 24px;
   line-height: 1.6;
 }
+.menu-footer-note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.menu-footer-note a:hover { color: var(--accent2); }
+
+/* Artist Pass intro */
+.menu-pass-intro {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+/* Artist Pass cards */
+.menu-pass-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.menu-pass-card:last-child { margin-bottom: 0; }
+.menu-pass-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+.menu-pass-tier {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+.menu-pass-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+.menu-pass-price {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-left: auto;
+}
+.menu-pass-includes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.menu-pass-includes li {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 3px 0 3px 18px;
+  position: relative;
+}
+.menu-pass-includes li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 13px;
+}
+.menu-pass-best,
+.menu-pass-perk,
+.menu-pass-window {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 4px 0;
+  line-height: 1.5;
+}
+.menu-pass-best { font-style: italic; }
+.menu-pass-details {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Details link (reusable) */
+.details-link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+.details-link:hover { color: var(--accent2); }
 
 @media (max-width: 640px) {
   .menu-item { flex-direction: column; align-items: flex-start; gap: 6px; }
   .menu-item-price { align-self: flex-start; }
   .menu-rates { flex-direction: column; }
   .menu-rate-pill { min-width: 0; }
+  .menu-pass-header { flex-direction: column; }
+  .menu-pass-price { margin-left: 0; }
 }
 
 
@@ -3886,6 +4092,27 @@ body.has-mini-player .theme-fab                  { bottom: 82px;  }
 .dialog-body p:last-child { margin: 0; }
 .dialog-body strong { color: var(--text); }
 
+.dialog-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.dialog-contact-list li { margin: 8px 0; }
+.dialog-contact-list a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.dialog-contact-list a:hover { color: var(--accent2); }
+
+.dialog-footer-note {
+  font-size: 13px;
+  color: var(--muted2);
+  margin-top: 16px;
+  font-style: italic;
+}
+
 
 /* ─── 41. MENU HELP LINK ──────────────────────────────────── */
 
@@ -3902,6 +4129,139 @@ body.has-mini-player .theme-fab                  { bottom: 82px;  }
   transition: color 0.2s var(--ease);
 }
 .diff-link:hover { color: var(--accent2); }
+
+
+/* ─── 42a. MENU SPECIALIZED / DEALS / ASTERISK / QS-TAG ───── */
+
+/* Specialized subheader inside menu groups */
+.menu-specialized-header {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 20px 0 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Accent "Save" badge on Off-Peak rate pill */
+.menu-rate-save {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-left: 6px;
+}
+
+/* Compact Deals row (replaces pass cards) */
+.menu-deal-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.menu-deal-row:last-of-type { border-bottom: none; }
+
+.menu-deal-left { flex: 1; }
+.menu-deal-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+}
+.menu-deal-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 3px;
+  display: block;
+}
+.menu-deal-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.savings-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+}
+.savings-sub{
+  font-size:12px;
+  line-height:1.2;
+  color: var(--muted2);
+  white-space:nowrap;
+}
+.menu-deal-price {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+.menu-deal-window {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Clickable asterisk for Specialized routing */
+.menu-asterisk {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 0 1px;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  font-size: 11px;
+  vertical-align: super;
+}
+.menu-asterisk:hover { color: var(--accent2); }
+
+/* Quick-Start label tag near section header */
+.qs-label-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 10px;
+  opacity: 0.85;
+}
+
+/* Reach Out inline success message */
+.reach-out-success {
+  display: none;
+  text-align: center;
+  padding: 24px 0;
+  font-size: 16px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .menu-deal-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .menu-deal-right {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
 
 
 /* ─── 42. GALLERY HEADING + NARRATIVE ─────────────────────── */
@@ -3952,4 +4312,201 @@ body.has-mini-player .theme-fab                  { bottom: 82px;  }
   .card:hover { transform: none; }
   .qs-accordion-card:hover { transform: none; }
   .how-step:hover { transform: none; }
+}
+
+.dialog-divider{
+  height:1px;
+  background: var(--border);
+  margin: 18px 0;
+}
+.dialog-subtitle{
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+.dialog-muted{
+  margin: 0 0 10px 0;
+  color: var(--muted2);
+  font-size: 13px;
+}
+.dialog-footnote{
+  margin-top: 14px;
+  color: var(--muted2);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+
+/* Section divider between Quick-Start and Services Menu (subtle, full-width) */
+.section-divider{
+  width: min(1100px, 92vw);
+  height: 1px;
+  margin: 28px auto;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.18), rgba(255,255,255,0));
+  border: none;
+}
+
+
+/* How It Works (above Quick-Start options) */
+.how-it-works{
+  width: 100%;
+  margin: 18px 0 22px 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.how-it-works .hiw-step{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+.how-it-works .hiw-num{
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.78);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(0,198,255,0.18);
+  flex: 0 0 auto;
+}
+.how-it-works .hiw-title{
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.2;
+}
+.how-it-works .hiw-sub{
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.45;
+  margin-top: 4px;
+}
+.how-it-works .hiw-arrow{
+  color: var(--accent);
+  font-size: 28px;
+  line-height: 1;
+  padding: 0 18px;
+  flex: 0 0 auto;
+  margin-top: 12px;
+  opacity: 0.9;
+}
+@media (max-width: 720px){
+  .how-it-works{
+  width: 100%;
+  margin: 18px 0 22px 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .how-it-works .hiw-arrow{
+    display: none;
+  }
+}
+
+
+@media (max-width: 720px){
+  .how-it-works .hiw-num{
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+
+/* Menu header hint under reference line */
+.menu-explore-hint{
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(255,255,255,0.60);
+}
+.menu-explore-hint a{
+  color: var(--accent);
+}
+
+
+/* Reach Out modal - inline submit feedback */
+.form-inline-status{
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.72);
+}
+.form-inline-status .ok{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(0, 198, 255, 0.08);
+  border: 1px solid rgba(0, 198, 255, 0.18);
+}
+.form-inline-status .ok .tick{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(0, 198, 255, 0.20);
+  border: 1px solid rgba(0, 198, 255, 0.25);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-weight: 800;
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+.form-inline-status .ok .msg strong{
+  color: rgba(255,255,255,0.92);
+  font-weight: 700;
+}
+.form-inline-status .err{
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 70, 70, 0.10);
+  border: 1px solid rgba(255, 70, 70, 0.22);
+  color: rgba(255,255,255,0.82);
+}
+
+/* Submit button submitted state (match Quick-Start vibe) */
+#reachOutForm button[type="submit"].is-submitted{
+  background: rgba(60, 220, 120, 0.18) !important;
+  border-color: rgba(60, 220, 120, 0.40) !important;
+  color: rgba(235,255,245,0.92) !important;
+}
+#reachOutForm button[type="submit"].is-submitted:hover{
+  filter: none !important;
+}
+
+
+/* Extra breathing room before Quick-Start so it reveals naturally */
+#quick-start{
+  scroll-margin-top: 90px;
+}
+
+/* Quick-Start copy tightening */
+.qs-header .qs-subtitle{
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+.qs-header .qs-disclaimer{
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+.qs-funnel-note{
+  margin-top: 22px;
+}
+.qs-card-footnote{
+  margin-top: 10px;
 }

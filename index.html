@@ -274,7 +274,6 @@
 <a class="hero-primary-cta" href="#quick-start">Get Started</a>
 </div>
 <p class="hero-seo">Recording studio in San Francisco</p>
-<div class="hero-divider"></div>
 </section>
 <!-- ═══════════════════════════════════════════════════════════════
      2. QUICK-START (The only conversion hub)
@@ -285,10 +284,36 @@
 <!-- STEP 1: Two Options -->
 <div class="qs-step1" id="quickStartStep1">
 <div class="qs-header" data-reveal="">
-<h2 class="qs-title">It All Begins Here</h2>
+<h2 class="qs-title">It All Begins Here <span class="qs-label-tag">Quick-Start</span></h2>
 <p class="qs-subtitle">Choose your starting point.</p>
-<p class="qs-disclaimer">During launch, all clients start here so I can deliver consistently.</p>
+<p class="qs-disclaimer">During launch, everything starts here.</p>
 </div>
+<div class="how-it-works" aria-label="How it works">
+  <div class="hiw-step">
+    <div class="hiw-num">1</div>
+    <div class="hiw-text">
+      <div class="hiw-title">Choose Quick-Start</div>
+      <div class="hiw-sub">Pick Start with a Session or Start with a Plan.</div>
+    </div>
+  </div>
+  <div class="hiw-arrow" aria-hidden="true">→</div>
+  <div class="hiw-step">
+    <div class="hiw-num">2</div>
+    <div class="hiw-text">
+      <div class="hiw-title">Confirm details</div>
+      <div class="hiw-sub">Fill the short form, then choose a time.</div>
+    </div>
+  </div>
+  <div class="hiw-arrow" aria-hidden="true">→</div>
+  <div class="hiw-step">
+    <div class="hiw-num">3</div>
+    <div class="hiw-text">
+      <div class="hiw-title">Record &amp; deliver</div>
+      <div class="hiw-sub">Show up, create, leave with something real.</div>
+    </div>
+  </div>
+</div>
+
 <div class="qs-cards">
 <!-- Option 1: Start with a Session (LEFT) -->
 <div class="qs-accordion-card featured" data-flow="launch">
@@ -344,8 +369,8 @@
 </div>
 </div>
 </div>
-<p class="qs-funnel-note" data-reveal="">Everything starts here. All services begin with one of these two options.</p>
-<p class="qs-card-footnote" data-reveal="">$50 deposit confirms your time for all sessions (applied to total).</p>
+<p class="qs-funnel-note" data-reveal="">All services begin with one of these two options.</p>
+<p class="qs-card-footnote" data-reveal="">$50 deposit confirms your time for sessions (applied to total).</p>
 </div>
 <!-- STEP 2: Intake Forms -->
 <div id="quickStartStep2" style="display:none; opacity:0; transition:opacity 0.4s ease;">
@@ -374,6 +399,44 @@
 <div>
 <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Phone</label>
 <input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="tel"/>
+</div>
+</div>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are you looking to do?</label>
+<p style="font-size:13px; color:var(--muted); margin:0 0 10px;">Pick what you're building and I'll follow up to confirm details and quote it.</p>
+<div style="display:grid; gap:10px;">
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="recording" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Recording Session</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="rehearsal" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Band Rehearsal Capture</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="podcast" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Podcast Production</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="mobile" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Mobile Recording</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="buyout" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Studio Buyout + Custom Build (Tiny Desk-inspired performance capture)</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="fullbuild" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Full Build (Producer-Led)</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="artistfeature" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Artist Feature</span>
+</label>
+<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+<input name="specialized[]" type="checkbox" value="notsure" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+<span>Not sure yet</span>
+</label>
 </div>
 </div>
 <div>
@@ -545,197 +608,228 @@
 <!-- ═══════════════════════════════════════════════════════════════
      2b. HOW IT WORKS
      ═══════════════════════════════════════════════════════════════ -->
-<section class="how-section" data-reveal="" id="how-it-works">
-<div class="how-container">
-<h2 class="how-title">How It Works</h2>
-<div class="how-steps">
-<div class="how-step">
-<div class="how-step-num">1</div>
-<h3>Choose Quick-Start</h3>
-<p>Pick a free plan or a $100 intro session. Tell me about your project.</p>
-</div>
-<div aria-hidden="true" class="how-step-arrow">→</div>
-<div class="how-step">
-<div class="how-step-num">2</div>
-<h3>Confirm Details</h3>
-<p>Fill out a short intake form, then pick your time on the calendar.</p>
-</div>
-<div aria-hidden="true" class="how-step-arrow">→</div>
-<div class="how-step">
-<div class="how-step-num">3</div>
-<h3>Record &amp; Deliver</h3>
-<p>Show up, create, and leave with something real. I handle the technical side.</p>
-</div>
-</div>
-</div>
-</section>
 <!-- ═══════════════════════════════════════════════════════════════
      3. DIGITAL MENU (Reference-only, no booking CTAs)
      ═══════════════════════════════════════════════════════════════ -->
 <section class="menu-section" id="menu">
-<div class="menu-container" data-reveal="">
+  <div class="menu-container" data-reveal="">
+  <div class="section-divider" aria-hidden="true"></div>
 <div class="menu-header">
-<h2 class="menu-title">Services Menu</h2>
-<p class="menu-subtitle">For reference only. Booking begins with <a href="#quick-start">Quick-Start</a> above.</p>
-</div>
-<!-- Persona Filter -->
-<div class="persona-filter" id="personaFilter">
-<p class="persona-label">Show services for…</p>
-<div class="persona-options">
-<button class="persona-btn active" data-persona="all" type="button">Show All</button>
-<button class="persona-btn" data-persona="solo" type="button">Solo Artists</button>
-<button class="persona-btn" data-persona="bands" type="button">Bands &amp; Groups</button>
-<button class="persona-btn" data-persona="beyond" type="button">Beyond the Studio</button>
-</div>
-</div>
-<!-- Services Content -->
-<div id="menuContent">
-<!-- In-Studio Services -->
-<div class="menu-group" data-personas="all solo bands">
-<h3 class="menu-group-title">In the Studio</h3>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Recording Session</span>
-<span class="menu-item-desc">Track vocals/instruments with engineering + production support.</span>
-</div>
-<span class="menu-item-price">$65-$100/hr</span>
-</div>
-<div class="menu-item" data-personas="all bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Band Rehearsal Capture</span>
-<span class="menu-item-desc">Live multi-mic capture of rehearsal for review and demos. 8-input interface, 5 headphone monitoring stations.</span>
-</div>
-<span class="menu-item-price">$65-$100/hr</span>
-</div>
-<div class="menu-item-help" data-personas="all bands">
-<a class="diff-link" href="#" id="diffLink">What’s the difference?</a>
-</div>
-</div>
-<!-- Custom & On-Location -->
-<div class="menu-group" data-personas="all bands beyond">
-<h3 class="menu-group-title">Custom &amp; On-Location</h3>
-<div class="menu-item" data-personas="all beyond">
-<div class="menu-item-left">
-<span class="menu-item-name">Studio Buyout / Custom Build</span>
-<span class="menu-item-desc">Full room buyout for podcasts, live video, private sessions, or anything you can dream up.</span>
-</div>
-<span class="menu-item-price">Custom pricing</span>
-</div>
-<div class="menu-item" data-personas="all bands beyond">
-<div class="menu-item-left">
-<span class="menu-item-name">Mobile Recording</span>
-<span class="menu-item-desc">I bring professional recording gear to your space.</span>
-</div>
-<span class="menu-item-price">Custom pricing</span>
-</div>
-<div class="menu-item" data-personas="all beyond">
-<div class="menu-item-left">
-<span class="menu-item-name">Live Event Photography</span>
-<span class="menu-item-desc">Shows, rehearsals, live performances. Professional photos delivered fast.</span>
-</div>
-<span class="menu-item-price">Custom pricing</span>
-</div>
-<div class="menu-item" data-personas="all beyond">
-<div class="menu-item-left">
-<span class="menu-item-name">Podcast Production</span>
-<span class="menu-item-desc">Full production with lights, cameras, mics. Studio or I come to you.</span>
-</div>
-<span class="menu-item-price">Custom pricing</span>
-</div>
-<div class="menu-item" data-personas="all solo bands beyond">
-<div class="menu-item-left">
-<span class="menu-item-name">Artist Feature</span>
-<span class="menu-item-desc">Tell your story. Share your music. Build connection. Podcast-style storytelling platform, livestreamed or edited for YouTube. Available by invitation or booking.</span>
-</div>
-<span class="menu-item-price">$300</span>
-</div>
-</div>
-<!-- Polish & Deliver -->
-<div class="menu-group" data-personas="all solo bands">
-<h3 class="menu-group-title">Polish &amp; Deliver <span class="menu-group-note">(for hourly clients)</span></h3>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Final Stems</span>
-<span class="menu-item-desc">Fully organized, labeled, and session-ready files for mixing or collaboration.</span>
-</div>
-<span class="menu-item-price">$75 flat</span>
-</div>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Final Mix</span>
-<span class="menu-item-desc">Release-ready final mix with 2 revision rounds.</span>
-</div>
-<span class="menu-item-price">$75/song</span>
-</div>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Photo Package</span>
-<span class="menu-item-desc">15+ edited photos from your next show or performance + vertical clips.</span>
-</div>
-<span class="menu-item-price">$185</span>
-</div>
-</div>
-<!-- Full Build -->
-<div class="menu-group menu-group-highlight" data-personas="all solo bands">
-<h3 class="menu-group-title">Full Build</h3>
-<div class="menu-item menu-item-featured" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Full Build <span class="menu-item-badge">Producer-Led</span></span>
-<span class="menu-item-desc">Hand your idea over to the Studio. Piano, bass, guitar, synth, MIDI, drums, percussion, vocals, harmonies - whatever. Built out completely. Revision passes included.</span>
-</div>
-<span class="menu-item-price">$65/hr</span>
-</div>
-</div>
-<!-- Artist Passes -->
-<div class="menu-group" data-personas="all solo bands">
-<h3 class="menu-group-title">Artist Passes <span class="menu-group-note">(includes stems, mixes &amp; live show photos)</span></h3>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Starter Pack</span>
-<span class="menu-item-desc">10 hours of recording + final mixes + live show photo package + final stems.</span>
-</div>
-<span class="menu-item-price">$750</span>
-</div>
-<div class="menu-item menu-item-featured" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Project Pass <span class="menu-item-badge">Best Value</span></span>
-<span class="menu-item-desc">20 hours of recording + final mixes + live show photo package + final stems.</span>
-</div>
-<span class="menu-item-price">$1,350</span>
-</div>
-<div class="menu-item" data-personas="all solo bands">
-<div class="menu-item-left">
-<span class="menu-item-name">Full Experience</span>
-<span class="menu-item-desc">40 hours of recording + final mixes + live show photo package + final stems + priority booking.</span>
-</div>
-<span class="menu-item-price">$2,400</span>
-</div>
-</div>
-<!-- Hourly Rates Reference -->
-<div class="menu-group" data-personas="all solo bands">
-<h3 class="menu-group-title">Hourly Rates</h3>
-<div class="menu-rates">
-<div class="menu-rate-pill">
-<span class="menu-rate-label">Off-Peak</span>
-<span class="menu-rate-price">$65<span>/hr</span></span>
-<span class="menu-rate-time">Weekdays 9am-6pm</span>
-</div>
-<div class="menu-rate-pill">
-<span class="menu-rate-label">Peak</span>
-<span class="menu-rate-price">$80<span>/hr</span></span>
-<span class="menu-rate-time">Weekdays 6pm-11pm + Weekends</span>
-</div>
-<div class="menu-rate-pill">
-<span class="menu-rate-label">Late-Nite</span>
-<span class="menu-rate-price">$100<span>/hr</span></span>
-<span class="menu-rate-time">Everyday 11pm-3am</span>
-</div>
-</div>
-</div>
-</div>
-<p class="menu-footer-note">Custom projects start in Quick-Start. <a href="#quick-start">Choose an option above</a> and tell us what you're building.</p>
-</div>
+      <h2 class="menu-title">Services Menu</h2>
+      <p class="menu-subtitle" style="font-size:15px; color:var(--muted); margin:8px 0 0; text-align:center;">
+        For reference only. Booking starts with <a href="#quick-start">Quick-Start</a> above.
+      </p>
+      <p class="menu-explore-hint" style="text-align:center;">Explore all the paths ↓</p>
+    </div>
+<!-- Category Tabs -->
+    <div class="persona-filter" id="personaFilter">
+      <div class="persona-options">
+        <button class="persona-btn active" data-persona="sessions" type="button">Studio Sessions</button>
+        <button class="persona-btn" data-persona="addons" type="button">Add-Ons</button>
+        <button class="persona-btn" data-persona="packages" type="button">Deals</button>
+        <button class="persona-btn" data-persona="location" type="button">On-Location</button>
+      </div>
+    </div>
+
+    <!-- Menu Content -->
+    <div id="menuContent">
+
+      <!-- ── Studio Sessions ── -->
+      <div class="menu-group" data-persona="sessions">
+        <h3 class="menu-group-title">Studio Sessions</h3>
+
+        <div class="menu-item" data-persona="sessions">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Recording Session</span>
+            <span class="menu-item-desc">Track vocals/instruments with engineering + production support.</span>
+          </div>
+          <span class="menu-item-price">$80/hr</span>
+        </div>
+
+        <div class="menu-item" data-persona="sessions">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Band Rehearsal Capture</span>
+            <span class="menu-item-desc">Live multi-input capture of rehearsal for review and demos. 8-input interface, 5 headphone monitoring stations.</span>
+          </div>
+          <span class="menu-item-price">$80/hr</span>
+        </div>
+
+        <div class="menu-item-help" data-persona="sessions">
+          <a class="diff-link" href="#" id="diffLink">What’s the difference?</a>
+        </div>
+
+        <!-- Hourly Rates (within Studio Sessions) -->
+        <div class="menu-rates">
+          <div class="menu-rate-pill">
+            <span class="menu-rate-label">Standard</span>
+            <span class="menu-rate-price">$80<span>/hr</span></span>
+            <span class="menu-rate-time">Standard rate</span>
+          </div>
+
+          <div class="menu-rate-pill">
+            <span class="menu-rate-label">Off-Peak</span>
+            <span class="menu-rate-save-top">Save $15/hr</span>
+            <span class="menu-rate-price">$65<span>/hr</span></span>
+            <span class="menu-rate-time">Weekdays 9am–6pm</span>
+          </div>
+
+          <div class="menu-rate-pill">
+            <span class="menu-rate-label">Late-Nite</span>
+            <span class="menu-rate-price">$100<span>/hr</span></span>
+            <span class="menu-rate-time">Everyday 11pm–3am (+$20/hr)</span>
+          </div>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <p class="menu-specialized-header">Specialized (Start with a Plan)</p>
+
+        <div class="menu-item" data-persona="sessions">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Full Build <span class="menu-group-note">(Producer-Led)</span></span>
+            <span class="menu-item-desc">Hand your idea over - we build it out together in-session.</span>
+          </div>
+          <span class="menu-item-price">$85/hr</span>
+        </div>
+
+        <div class="menu-item" data-persona="sessions">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Artist Feature</span>
+            <span class="menu-item-desc">A filmed, podcast-style feature built around you and your music... <a href="#" class="show-more-link" data-dialog="artistFeatureDialog">Show more</a></span>
+            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
+          </div>
+          <span class="menu-item-price">$450</span>
+        </div>
+
+        <div class="menu-item" data-persona="sessions">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Studio Buyout + Custom Build</span>
+            <span class="menu-item-desc">Tiny Desk-inspired performance capture - full sound, controlled environment... <a href="#" class="show-more-link" data-dialog="studioBuyoutDialog">Show more</a></span>
+            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
+          </div>
+          <span class="menu-item-price">Scoping call</span>
+        </div>
+
+      </div>
+
+      <!-- ── Add-Ons ── -->
+      <div class="menu-group" data-persona="addons">
+        <h3 class="menu-group-title">Add-Ons</h3>
+
+        <div class="menu-item" data-persona="addons">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Final Stems</span>
+            <span class="menu-item-desc">Fully organized, labeled, session-ready files for mixing or collaboration.</span>
+          </div>
+          <span class="menu-item-price">$75/song</span>
+        </div>
+
+        <div class="menu-item" data-persona="addons">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Final Mix</span>
+            <span class="menu-item-desc">Release-ready final mix with 2 revision rounds.</span>
+          </div>
+          <span class="menu-item-price">$150/song</span>
+        </div>
+      </div>
+
+      <!-- ── Deals ── -->
+      <div class="menu-group" data-persona="packages">
+        <h3 class="menu-group-title">Deals</h3>
+
+        <div class="menu-group-header">
+          <p class="menu-group-desc">Prepay studio time (engineer included) and get rewarded with discounted hours plus capped release deliverables. Keep it simple, stay consistent, ship music.</p>
+        </div>
+
+        <div class="menu-deal-row">
+          <div class="menu-deal-left">
+            <span class="menu-deal-name">Starter - The Momentum Pass</span>
+            <span class="menu-deal-meta">Includes: 10 studio hours • 1 Final Mix • 1 Stems export</span>
+            <span class="menu-deal-perks">Perks: Next-Gig $400 (save $50) • Artist Feature $400 (save $50)</span>
+          </div>
+          <div class="menu-deal-right">
+            <span class="menu-deal-price">$750</span>
+            <div class="savings-stack">
+              <span class="savings-badge">Save $275 built-in</span>
+              <span class="savings-sub">Up to $375 total with perks</span>
+            </div>
+            <a href="#" class="deal-details-link" data-dialog="passDetailsDialog" data-pass="starter">Details</a>
+          </div>
+        </div>
+
+        <div class="menu-deal-row">
+          <div class="menu-deal-left">
+            <span class="menu-deal-name">Builder - The Catalog Pass</span>
+            <span class="menu-deal-meta">Includes: 24 studio hours • 3 Final Mixes • 3 Stems exports</span>
+            <span class="menu-deal-perks">Perks: Next-Gig $350 (save $100) • Artist Feature $350 (save $100)</span>
+          </div>
+          <div class="menu-deal-right">
+            <span class="menu-deal-price">$1,750</span>
+            <div class="savings-stack">
+              <span class="savings-badge">Save $845 built-in</span>
+              <span class="savings-sub">Up to $1,045 total with perks</span>
+            </div>
+            <a href="#" class="deal-details-link" data-dialog="passDetailsDialog" data-pass="builder">Details</a>
+          </div>
+        </div>
+
+        <div class="menu-deal-row">
+          <div class="menu-deal-left">
+            <span class="menu-deal-name">Headliner - The Release Pass</span>
+            <span class="menu-deal-meta">Includes: 48 studio hours • 6 Final Mixes • 6 Stems exports</span>
+            <span class="menu-deal-perks">Perks: Additional Next-Gig $300 (save $150) • Artist Feature $300 (save $150)</span>
+          </div>
+          <div class="menu-deal-right">
+            <span class="menu-deal-price">$3,495</span>
+            <div class="savings-stack">
+              <span class="savings-badge">Save $1,695 built-in</span>
+              <span class="savings-sub">Up to $1,995 total with perks</span>
+            </div>
+            <a href="#" class="deal-details-link" data-dialog="passDetailsDialog" data-pass="headliner">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── On-Location ── -->
+      <div class="menu-group" data-persona="location">
+        <h3 class="menu-group-title">On-Location</h3>
+
+        <div class="menu-item" data-persona="location">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Next-Gig Content Capture</span>
+            <span class="menu-item-desc">On-site photo + video coverage for your next show... <a href="#" class="show-more-link" data-dialog="nextGigDialog">Show more</a></span>
+          </div>
+          <span class="menu-item-price">$450</span>
+        </div>
+
+        <p class="menu-specialized-header">Specialized (Start with a Plan)</p>
+
+        <div class="menu-item" data-persona="location">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Podcast Production</span>
+            <span class="menu-item-desc">Full production in-studio or on-location (2-hr min).</span>
+            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
+          </div>
+          <span class="menu-item-price">$200/hr</span>
+        </div>
+
+        <div class="menu-item" data-persona="location">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Mobile Recording</span>
+            <span class="menu-item-desc">I bring professional recording gear to your space (4-hr min).</span>
+            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
+          </div>
+          <span class="menu-item-price">$100/hr</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="menu-footer-note">Ready to book? <a href="#quick-start">Start with Quick-Start above</a>. Got questions? <a href="#" data-dialog="reachOutDialog">Reach out</a>.</p>
+  </div>
 </section>
+<div class="section-divider" aria-hidden="true"></div>
+
 <!-- ═══════════════════════════════════════════════════════════════
      4b. GALLERY
      ═══════════════════════════════════════════════════════════════ -->
@@ -1179,6 +1273,155 @@ This policy protects reserved time and preparation work. Sessions are built arou
 <p>Comfort-focused. The whole band plays together and I capture everything live through an 8-input interface with 5 headphone stations. Ideal for reviewing arrangements, making demos, or documenting the energy of your rehearsal.</p>
 <p><strong>Which should I pick?</strong></p>
 <p>If you want release-quality recordings with careful attention to each part, go with a Recording Session. If you want to capture what your band sounds like in the room - quickly and without overthinking - Band Capture is the move.</p>
+</div>
+</div>
+</div>
+
+<!-- Contact Dialog -->
+<div class="dialog-overlay" id="contactDialog">
+<div class="dialog-box">
+<div class="dialog-header">
+<h3>Get in contact</h3>
+<button aria-label="Close" class="dialog-close">&times;</button>
+</div>
+<div class="dialog-body">
+<p>Want to talk it through? Reach me here:</p>
+<ul class="dialog-contact-list">
+<li><a href="https://www.instagram.com/thestudiosf/" target="_blank" rel="noopener">DM on Instagram</a></li>
+<li><a href="sms:+14153264531">Text Stephen (415) 326-4531</a></li>
+<li><a href="mailto:hello@bookthestudiosf.com">Email Stephen</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Next-Gig Content Capture Dialog -->
+<div class="dialog-overlay" id="nextGigDialog">
+<div class="dialog-box">
+<div class="dialog-header">
+<h3>Next-Gig Content Capture - $450</h3>
+<button aria-label="Close" class="dialog-close">&times;</button>
+</div>
+<div class="dialog-body">
+<p><strong>What it is:</strong> I come capture your set and deliver a small content bundle for socials.</p>
+<p><strong>Included:</strong></p>
+<ul>
+<li>Up to 75 minutes on-site</li>
+<li>15 edited photos (exactly 15)</li>
+<li>3 vertical clips (10–20 seconds)</li>
+<li>Delivered within 7 days</li>
+<li>San Francisco only (outside SF quoted separately)</li>
+</ul>
+<p class="dialog-footer-note">Additional coverage time is quoted separately.</p>
+</div>
+</div>
+</div>
+<!-- Artist Pass Details Dialog -->
+<div class="dialog-overlay" id="passDetailsDialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h3 id="passDetailsTitle">Artist Pass Details</h3>
+      <button aria-label="Close" class="dialog-close">&times;</button>
+    </div>
+    <div class="dialog-body">
+      <div id="passSavingsBreakdown"></div>
+
+      <div class="dialog-divider"></div>
+
+      <h4 class="dialog-subtitle">Pass Details</h4>
+      <ul>
+        <li>3-hour minimum per booking</li>
+        <li><strong>Pass hours apply to Standard + Off-Peak. Late-Nite is allowed with a +$20/hr top-up.</strong></li>
+        <li>Mixes include 1 revision round (additional revisions available)</li>
+        <li>Mixes/Stems are per song</li>
+        <li>Shareable within one project</li>
+      </ul>
+
+      <p class="dialog-footnote">Savings shown compare pass pricing to standard a la carte rates ($80/hr studio, $150 Final Mix, $75 Stems export). Optional perk savings apply only if those perks are booked. Perks are not included in pass price unless stated otherwise.</p>
+    </div>
+  </div>
+</div>
+<!-- Artist Feature Dialog -->
+<div class="dialog-overlay" id="artistFeatureDialog">
+<div class="dialog-box">
+<div class="dialog-header">
+<h3>Artist Feature - $450</h3>
+<button aria-label="Close" class="dialog-close">&times;</button>
+</div>
+<div class="dialog-body">
+<p>A filmed, podcast-style feature built around you - your story, your music, your voice.</p>
+<p><strong>What&rsquo;s included:</strong></p>
+<ul>
+<li>1&ndash;2 hour interview-style conversation on mic</li>
+<li>Livestreamed or edited for YouTube (your choice)</li>
+<li>Highlight clip cut for socials</li>
+<li>Studio-quality audio throughout</li>
+</ul>
+<p class="dialog-footer-note">Best for artists who want to connect with an audience beyond the music.</p>
+</div>
+</div>
+</div>
+<!-- Studio Buyout + Custom Build Dialog -->
+<div class="dialog-overlay" id="studioBuyoutDialog">
+<div class="dialog-box">
+<div class="dialog-header">
+<h3>Studio Buyout + Custom Build</h3>
+<button aria-label="Close" class="dialog-close">&times;</button>
+</div>
+<div class="dialog-body">
+<p style="font-size:14px; color:var(--muted); margin:-4px 0 14px;">Tiny Desk-inspired performance capture</p>
+<p>A controlled, live-style performance capture inside the studio. Think Tiny Desk-inspired visuals, but the stage is yours - bring a stripped-down set or your full sound.</p>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Release day drops and visual singles</li>
+<li>Press kits and EPK video</li>
+<li>Content that looks and sounds like a real production</li>
+</ul>
+<p><strong>How it works:</strong> We scope the shoot during Start with a Plan &mdash; I&rsquo;ll walk you through setup, crew needs, and a realistic timeline before anything is confirmed.</p>
+<p>Crew requirements can include in-house camera operator(s) we hire and manage for your shoot as part of the scoped plan.</p>
+<a href="#" class="btn btn-nav-cta open-plan-intake" style="display:inline-block; margin-top:16px; padding:10px 20px; border-radius:999px; font-size:14px; font-weight:500; text-decoration:none;">Start with a Plan &rarr;</a>
+</div>
+</div>
+</div>
+<!-- Reach Out Dialog -->
+<div class="dialog-overlay" id="reachOutDialog">
+<div class="dialog-box">
+<div class="dialog-header">
+<h3>Reach Out</h3>
+<button aria-label="Close" class="dialog-close">&times;</button>
+</div>
+<div class="dialog-body">
+<form action="/" data-netlify="true" id="reachOutForm" method="POST" name="reach-out" style="display:grid; gap:16px;">
+<input name="form-name" type="hidden" value="reach-out"/>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:6px;">Name *</label>
+<input name="name" placeholder="First and last name" required="" style="width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; box-sizing:border-box;" type="text"/>
+</div>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:6px;">Email *</label>
+<input name="email" placeholder="you@example.com" required="" style="width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; box-sizing:border-box;" type="email"/>
+</div>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:6px;">Phone</label>
+<input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; box-sizing:border-box;" type="tel"/>
+</div>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:6px;">What can I help with? *</label>
+<select name="topic" required="" style="width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; box-sizing:border-box; cursor:pointer;">
+<option value="">Select one...</option>
+<option value="booking">Booking question</option>
+<option value="pricing">Pricing question</option>
+<option value="specialized">Specialized project</option>
+<option value="other">Something else</option>
+</select>
+</div>
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:6px;">Message</label>
+<textarea name="message" placeholder="Anything else you want to share..." rows="3" style="width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+</div>
+<button class="btn btn-nav-cta" style="width:100%; padding:13px; border-radius:10px; font-size:15px; font-weight:500; cursor:pointer;" type="submit">Send &rarr;</button>
+      <div class="form-inline-status" aria-live="polite"></div>
+
+</form>
 </div>
 </div>
 </div>
