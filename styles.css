@@ -4510,3 +4510,60 @@ body.has-mini-player .theme-fab                  { bottom: 82px;  }
 .qs-card-footnote{
   margin-top: 10px;
 }
+
+
+/* Testimonials: reduce card heaviness, more elegant */
+.testimonial-grid{
+  gap: 14px;
+}
+.testimonial-card{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px 18px;
+  box-shadow: none;
+}
+.testimonial-text{
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+}
+.testimonial-meta{
+  margin-top: 10px;
+  color: rgba(255,255,255,0.62);
+}
+.testimonials-more{
+  margin-top: 14px;
+}
+.testimonials-more-btn{
+  color: var(--accent);
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.testimonials-more-btn::-webkit-details-marker{
+  display:none;
+}
+.testimonials-hide-btn{
+  margin-top: 14px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  color: rgba(255,255,255,0.78);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.testimonials-hide-btn:hover{
+  border-color: rgba(255,255,255,0.20);
+}
+
+
+/* Spacer after top testimonials (keeps breathing room before the player) */
+.testimonials-spacer{
+  height: 54px;
+}
+@media (max-width: 720px){
+  .testimonials-spacer{ height: 42px; }
+}
