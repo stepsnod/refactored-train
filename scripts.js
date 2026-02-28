@@ -2,11 +2,13 @@
    STUDIO SAN FRANCISCO — scripts.js (Refactored)
    ═══════════════════════════════════════════════════════════════
 
-   FORMS & CALENDLY
+   PRE-LAUNCH CHECKLIST — FORMS & CALENDLY
    =========================================
-   Forms are handled by Netlify Forms (data-netlify="true").
+   The following forms capture data on the frontend but do NOT send
+   to a backend yet. Before launch, connect each to Formspree,
+   Netlify Forms, EmailJS, or a custom API endpoint.
 
-   Forms:
+   Forms that need backend:
      1. #walkthroughForm  — Quick Start: tour/kickoff intake
      2. #launchForm       — Quick Start: session intake ($100 intro)
 
@@ -1335,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'audio/Shorty Sax - feat. Gordon Ramos - 02 25 2023.mp3',
     'audio/Queen Snake - Audie Bethea feat. Lizzie Waters - 03 27 2025.mp3',
     'audio/Poetry (demo) - Marina Ilyas - 7 9 2023.mp3',
-    'audio/IMPATIENLY WAITING - 12 27 2025.mp3',
+    'audio/IMPATIENTLY WAITING - 12 27 2025.mp3',
     'audio/Lost in my Mind - 08 14 2025.mp3',
     'audio/TO ME - 07 31 2024.mp3',
     'audio/Crazy for You - 01 13 2025.mp3',
@@ -1452,17 +1454,34 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ── MARQUEE ────────────────────────────────────────────────────
+  function spApplyMarquee(container, inner) {
+    if (!container || !inner) return;
+    container.classList.remove('is-scrolling');
+    var overflow = inner.scrollWidth - container.clientWidth;
+    if (overflow > 6) {
+      var dur = Math.max(6, Math.round(overflow / 28)) + 's';
+      container.style.setProperty('--marquee-distance', '-' + overflow + 'px');
+      container.style.setProperty('--marquee-dur', dur);
+      setTimeout(function () { container.classList.add('is-scrolling'); }, 1200);
+    }
+  }
+
   function spCheckMarquee() {
     if (!spTitle) return;
     var inner = spTitle.querySelector('.sp-title-inner');
-    if (!inner) return;
-    spTitle.classList.remove('is-scrolling');
-    var overflow = inner.scrollWidth - spTitle.clientWidth;
-    if (overflow > 6) {
-      var dur = Math.max(6, Math.round(overflow / 28)) + 's';
-      spTitle.style.setProperty('--marquee-distance', '-' + overflow + 'px');
-      spTitle.style.setProperty('--marquee-dur', dur);
-      setTimeout(function () { spTitle.classList.add('is-scrolling'); }, 1200);
+    spApplyMarquee(spTitle, inner);
+
+    // Sub-line marquee
+    if (spSubEl) {
+      var subInner = spSubEl.querySelector('.sp-sub-inner');
+      spApplyMarquee(spSubEl, subInner);
+    }
+
+    // Mini-player title marquee
+    var miniTitle = document.getElementById('miniTitle');
+    if (miniTitle) {
+      var miniInner = miniTitle.querySelector('.mini-title-inner');
+      spApplyMarquee(miniTitle, miniInner);
     }
   }
 
@@ -1488,17 +1507,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (inner) inner.textContent = parsed.title;
     var wakeSubText = parsed.artist || '';
     if (parsed.date) wakeSubText += (wakeSubText ? ' \u00b7 ' : '') + parsed.date;
-    if (spSubEl) spSubEl.textContent = wakeSubText || '\u2014';
+    if (spSubEl) {
+      var subInner = spSubEl.querySelector('.sp-sub-inner');
+      if (subInner) { subInner.textContent = wakeSubText || '\u2014'; }
+      else { spSubEl.innerHTML = '<span class="sp-sub-inner">' + (wakeSubText || '\u2014') + '</span>'; }
+    }
     if (spCounter) spCounter.textContent = 'Track ' + (spIdx + 1) + ' of ' + spTracks.length;
     spUpdatePlaysUI(spIdx);
     if (spAudio) {
       spAudio.src = spTracks[spIdx];
       spAudio.load();
     }
-    setTimeout(spCheckMarquee, 60);
+    setTimeout(spCheckMarquee, 200);
     // Update mini-player title
     var miniTitle = document.getElementById('miniTitle');
-    if (miniTitle) miniTitle.textContent = spNames[spIdx];
+    if (miniTitle) {
+      var miniInner = miniTitle.querySelector('.mini-title-inner');
+      var miniText = spNames[spIdx];
+      if (miniInner) { miniInner.textContent = miniText; }
+      else { miniTitle.innerHTML = '<span class="mini-title-inner">' + miniText + '</span>'; }
+    }
   }
 
   // ── LOAD TRACK ─────────────────────────────────────────────────
@@ -1517,9 +1545,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (inner) inner.textContent = parsed.title;
     if (spTitle) spTitle.classList.remove('is-scrolling');
+    if (spSubEl) spSubEl.classList.remove('is-scrolling');
     var subText = parsed.artist || '';
     if (parsed.date) subText += (subText ? ' \u00b7 ' : '') + parsed.date;
-    if (spSubEl) spSubEl.textContent = subText || '\u2014';
+    if (spSubEl) {
+      var subInner = spSubEl.querySelector('.sp-sub-inner');
+      if (subInner) { subInner.textContent = subText || '\u2014'; }
+      else { spSubEl.innerHTML = '<span class="sp-sub-inner">' + (subText || '\u2014') + '</span>'; }
+    }
     if (spCounter) spCounter.textContent = 'Track ' + (idx + 1) + ' of ' + spTracks.length;
     spUpdatePlaysUI(idx);
     if (spBar) spBar.style.width = '0';
@@ -1528,7 +1561,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update mini-player title
     var miniTitle = document.getElementById('miniTitle');
-    if (miniTitle) miniTitle.textContent = spNames[idx];
+    if (miniTitle) {
+      miniTitle.classList.remove('is-scrolling');
+      var miniInner = miniTitle.querySelector('.mini-title-inner');
+      var miniText = spNames[idx];
+      if (miniInner) { miniInner.textContent = miniText; }
+      else { miniTitle.innerHTML = '<span class="mini-title-inner">' + miniText + '</span>'; }
+    }
 
     if (spAudio) {
       spAudio.pause();
@@ -1540,7 +1579,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    setTimeout(spCheckMarquee, 60);
+    setTimeout(spCheckMarquee, 200);
   }
 
   // ── TOGGLE PLAY/PAUSE ─────────────────────────────────────────

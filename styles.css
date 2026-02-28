@@ -3977,6 +3977,13 @@ p.hidden { display: none !important; }
   text-overflow: ellipsis;
   margin-bottom: 2px;
 }
+.sp-sub-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+.sp-sub.is-scrolling .sp-sub-inner {
+  animation: sp-marquee var(--marquee-dur, 8s) linear infinite;
+}
 
 .sp-counter-row {
   display: flex;
@@ -4324,9 +4331,15 @@ p.hidden { display: none !important; }
   color: var(--text);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   cursor: pointer;
   transition: color 0.2s;
+}
+.mini-title-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+.mini-title.is-scrolling .mini-title-inner {
+  animation: sp-marquee var(--marquee-dur, 8s) linear infinite;
 }
 .mini-title:hover { color: var(--accent); }
 .mini-plays {
