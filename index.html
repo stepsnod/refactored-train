@@ -2,6 +2,15 @@
 
 <html data-theme="dark" lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKSHE7V4MH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZKSHE7V4MH');
+</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#00c6ff" name="theme-color"/>
@@ -14,22 +23,23 @@
 <link href="https://www.bookthestudiosf.com/" rel="canonical"/>
 <!-- Favicons -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙</text></svg>"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <!-- Open Graph / Facebook -->
 <meta content="Studio San Francisco | Recording Sessions &amp; Artist Passes in SF" property="og:title"/>
 <meta content="Recording studio in San Francisco. Engineer-led sessions from $100, artist passes, band capture, and live show photography." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://www.bookthestudiosf.com/" property="og:url"/>
-<meta content="https://www.bookthestudiosf.com/assets/stephen-in-studio.jpg" property="og:image"/>
+<meta content="https://www.bookthestudiosf.com/images/studio-1.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Stephen recording at Studio San Francisco" property="og:image:alt"/>
+<meta content="Studio San Francisco main room" property="og:image:alt"/>
 <meta content="Studio San Francisco" property="og:site_name"/>
 <meta content="en_US" property="og:locale"/>
 <!-- Twitter -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Studio San Francisco | Recording Sessions &amp; Artist Passes in SF" name="twitter:title"/>
 <meta content="Recording studio in San Francisco. Engineer-led sessions from $100, artist passes, band capture, and live show photography." name="twitter:description"/>
-<meta content="https://www.bookthestudiosf.com/assets/stephen-in-studio.jpg" name="twitter:image"/>
+<meta content="https://www.bookthestudiosf.com/images/studio-1.jpg" name="twitter:image"/>
 <!-- Author -->
 <meta content="Stephen" name="author"/>
 <!-- Geo Tags -->
@@ -65,10 +75,12 @@
     "hasMap": "https://maps.google.com/?q=2025+McKinnon+Ave,+San+Francisco,+CA+94124",
     "areaServed": ["San Francisco Bay Area", "San Francisco", "Oakland", "Daly City"],
     "sameAs": [
-      "https://www.instagram.com/thestudiosf/"
+      "https://www.instagram.com/thestudiosf/",
+      "https://www.yelp.com/biz/studio-san-francisco-san-francisco",
+      "https://maps.app.goo.gl/PpWS9N8rpbf1C26c8"
     ],
     "openingHours": "Mo-Su 09:00-21:00",
-    "image": "https://www.bookthestudiosf.com/assets/stephen-in-studio.jpg",
+    "image": "https://www.bookthestudiosf.com/images/studio-1.jpg",
     "founder": {
       "@type": "Person",
       "name": "Stephen",
@@ -266,13 +278,22 @@
 <section class="hero-section" id="home">
 <h1 class="hero-title" data-reveal="">Studio San Francisco</h1>
 <p class="hero-kicker" data-reveal="">Built for creators  |  Powered by the Bay</p>
-<p class="hero-tagline" data-reveal="">A recording studio in San Francisco where solo artists, bands, and projects get an engineer, full backline, and a focused space built to create. Plan it, track it, shape it. Leave with something real, with optional media production and publish-ready content when it fits the project.</p>
-<p class="hero-engineer-note" data-reveal="">Engineer <span class="always-underline">always</span> included.</p>
-<p class="hero-motto" data-reveal="">Bring an idea. Leave with a movement.</p>
-<!-- Primary CTA pair -->
-<div class="hero-cta-pair" data-reveal="">
-<a class="hero-primary-cta" href="#quick-start">Get Started</a>
+
+<p class="hero-tagline" data-reveal="">A recording studio in San Francisco where solo artists, bands, and projects get an engineer, full backline, and a focused space built to create. Leave with something real — with optional media production and publish-ready content when it fits the project.</p>
+<p class="hero-rhythm" data-reveal=""><span class="hero-rhythm-phrase">Plan it, track it, shape it.</span><span class="hero-rhythm-sep"> · </span><span class="hero-engineer-inline">Engineer <span class="hero-always">always</span> included.</span></p>
+<p class="hero-rhythm hero-rhythm-secondary" data-reveal="">Bring an idea. Leave with a movement.</p>
+
+<!-- Hero play prompt — triggers mini-player, then fades away -->
+<div class="hero-listen" id="heroListen" data-reveal="">
+  <span class="hero-listen-pre">Listen while you browse</span>
+  <button class="hero-play-btn" id="heroPlayBtn" type="button" aria-label="Play studio samples">
+    <span class="hero-play-icon" aria-hidden="true">&#9654;</span>
+  </button>
+  <span class="hero-listen-post">Samples from the Studio</span>
 </div>
+
+<a class="hero-next" href="#quick-start" data-reveal="">next <span aria-hidden="true">↓</span></a>
+
 <p class="hero-seo">Recording studio in San Francisco</p>
 </section>
 <!-- ═══════════════════════════════════════════════════════════════
@@ -322,7 +343,7 @@
 <div class="tier1-kicker">Launch Intro</div>
 <h3 class="qs-card-title">Start with a Session</h3>
 <div class="qs-card-price gold">$100</div>
-<div class="qs-card-urgency">Launch pricing · limited availability</div>
+<div class="qs-card-urgency">Launch pricing</div>
 <p class="qs-card-meta">2 hours · engineer included · full backline</p>
 <div class="qs-card-badges">
 <span class="qs-pill">Recording</span>
@@ -336,7 +357,7 @@
 <span class="qs-card-who-label">Best for:</span> Artists ready to record.
       </div>
 <div class="qs-card-checks">
-<div class="qs-check"><span class="qs-check-icon">✓</span><span>Engineer included for the full 2 hours.</span></div>
+<div class="qs-check"><span class="qs-check-icon">✓</span><span class="qs-ethos-line">Engineer <span class="qs-always">always</span> included.</span></div>
 <div class="qs-check"><span class="qs-check-icon">✓</span><span>Leave with takes + a direction for the next session.</span></div>
 <div class="qs-check"><span class="qs-check-icon">✓</span><span>Quick mix included.</span></div>
 <div class="qs-check"><span class="qs-check-icon">✓</span><span>One-page kickoff plan included.</span></div>
@@ -491,6 +512,30 @@
 <option value="no-rush">No rush</option>
 </select>
 </div>
+<!-- Referral -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone?</label>
+<input name="referral_name" placeholder="Name of person who referred you (if any)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+</div>
+<!-- Discount Code -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code?</label>
+<input name="discount_code" placeholder="Enter code (if you have one)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+</div>
+<!-- How did you hear about us -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">How did you hear about us?</label>
+<select name="hear_about" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
+<option value="">Select one...</option>
+<option value="word-of-mouth">Word of mouth</option>
+<option value="google">Google search</option>
+<option value="instagram">Instagram</option>
+<option value="yelp">Yelp</option>
+<option value="referral">Referral / friend</option>
+<option value="repeat">I've been here before</option>
+<option value="other">Other</option>
+</select>
+</div>
 <div>
 <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? (optional)</label>
 <textarea name="notes" placeholder="Deadlines, references, must-haves, constraints - anything helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
@@ -576,6 +621,30 @@
 <option value="not-sure">Not sure yet</option>
 </select>
 </div>
+<!-- Referral -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone?</label>
+<input name="referral_name" placeholder="Name of person who referred you (if any)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+</div>
+<!-- Discount Code -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code?</label>
+<input name="discount_code" placeholder="Enter code (if you have one)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+</div>
+<!-- How did you hear about us -->
+<div>
+<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">How did you hear about us?</label>
+<select name="hear_about" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
+<option value="">Select one...</option>
+<option value="word-of-mouth">Word of mouth</option>
+<option value="google">Google search</option>
+<option value="instagram">Instagram</option>
+<option value="yelp">Yelp</option>
+<option value="referral">Referral / friend</option>
+<option value="repeat">I've been here before</option>
+<option value="other">Other</option>
+</select>
+</div>
 <div>
 <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? (optional)</label>
 <textarea name="notes" placeholder="Deadlines, references, must-haves - anything helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
@@ -616,9 +685,7 @@
   <div class="section-divider" aria-hidden="true"></div>
 <div class="menu-header">
       <h2 class="menu-title">Services Menu</h2>
-      <p class="menu-subtitle" style="font-size:15px; color:var(--muted); margin:8px 0 0; text-align:center;">
-        For reference only. Booking starts with <a href="#quick-start">Quick-Start</a> above.
-      </p>
+      <p class="services-intro-line">Browse the menu, then start with <a href="#quick-start" class="services-intro-link">Quick-Start</a> above.</p>
       <p class="menu-explore-hint" style="text-align:center;">Explore all the paths ↓</p>
     </div>
 <!-- Category Tabs -->
@@ -628,6 +695,7 @@
         <button class="persona-btn" data-persona="addons" type="button">Add-Ons</button>
         <button class="persona-btn" data-persona="packages" type="button">Deals</button>
         <button class="persona-btn" data-persona="location" type="button">On-Location</button>
+        <button class="persona-btn" data-persona="specialized" type="button">Specialized</button>
       </div>
     </div>
 
@@ -643,78 +711,40 @@
             <span class="menu-item-name">Recording Session</span>
             <span class="menu-item-desc">Track vocals/instruments with engineering + production support.</span>
           </div>
-          <span class="menu-item-price">$80/hr</span>
         </div>
 
         <div class="menu-item" data-persona="sessions">
           <div class="menu-item-left">
             <span class="menu-item-name">Band Rehearsal Capture</span>
-            <span class="menu-item-desc">Live multi-input capture of rehearsal for review and demos. 8-input interface, 5 headphone monitoring stations.</span>
+            <span class="menu-item-desc">Live multi-input capture of rehearsal for review + demos. 8-input interface, 5 headphone monitoring stations.</span>
           </div>
-          <span class="menu-item-price">$80/hr</span>
         </div>
 
         <div class="menu-item-help" data-persona="sessions">
-          <a class="diff-link" href="#" id="diffLink">What’s the difference?</a>
+          <p class="menu-choice-hint">Most artists start with <strong>Recording Session</strong>.</p>
         </div>
 
-        <!-- Hourly Rates (within Studio Sessions) -->
-        <div class="menu-rates">
-          <div class="menu-rate-pill">
-            <span class="menu-rate-label">Standard</span>
-            <span class="menu-rate-price">$80<span>/hr</span></span>
-            <span class="menu-rate-time">Standard rate</span>
-          </div>
+        <div class="menu-subheading" data-persona="sessions">RATES</div>
 
-          <div class="menu-rate-pill">
-            <span class="menu-rate-label">Off-Peak</span>
-            <span class="menu-rate-save-top">Save $15/hr</span>
-            <span class="menu-rate-price">$65<span>/hr</span></span>
-            <span class="menu-rate-time">Weekdays 9am–6pm</span>
-          </div>
+        
 
-          <div class="menu-rate-pill">
-            <span class="menu-rate-label">Late-Nite</span>
-            <span class="menu-rate-price">$100<span>/hr</span></span>
-            <span class="menu-rate-time">Everyday 11pm–3am (+$20/hr)</span>
-          </div>
+        <!-- Rates — compact + clear modifiers -->
+        <div class="menu-rate-line" data-persona="sessions">
+          <span class="mrl-item mrl-standard"><strong>Standard</strong> $80/hr <span class="mrl-note">standard rate</span></span>
+          <span class="mrl-sep">·</span>
+          <span class="mrl-item"><strong>Off-Peak</strong> $65/hr <span class="mrl-badge mrl-save">save $15/hr</span> <span class="mrl-note">(Weekdays 9am–6pm)</span></span>
+          <span class="mrl-sep">·</span>
+          <span class="mrl-item"><strong>Late-Nite</strong> $100/hr <span class="mrl-badge mrl-plus">+$20/hr</span> <span class="mrl-note">(11pm–3am)</span></span>
         </div>
-
-        <div class="menu-divider"></div>
-
-        <p class="menu-specialized-header">Specialized (Start with a Plan)</p>
-
-        <div class="menu-item" data-persona="sessions">
-          <div class="menu-item-left">
-            <span class="menu-item-name">Full Build <span class="menu-group-note">(Producer-Led)</span></span>
-            <span class="menu-item-desc">Hand your idea over - we build it out together in-session.</span>
-          </div>
-          <span class="menu-item-price">$85/hr</span>
-        </div>
-
-        <div class="menu-item" data-persona="sessions">
-          <div class="menu-item-left">
-            <span class="menu-item-name">Artist Feature</span>
-            <span class="menu-item-desc">A filmed, podcast-style feature built around you and your music... <a href="#" class="show-more-link" data-dialog="artistFeatureDialog">Show more</a></span>
-            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
-          </div>
-          <span class="menu-item-price">$450</span>
-        </div>
-
-        <div class="menu-item" data-persona="sessions">
-          <div class="menu-item-left">
-            <span class="menu-item-name">Studio Buyout + Custom Build</span>
-            <span class="menu-item-desc">Tiny Desk-inspired performance capture - full sound, controlled environment... <a href="#" class="show-more-link" data-dialog="studioBuyoutDialog">Show more</a></span>
-            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
-          </div>
-          <span class="menu-item-price">Scoping call</span>
-        </div>
-
-      </div>
+</div>
 
       <!-- ── Add-Ons ── -->
       <div class="menu-group" data-persona="addons">
         <h3 class="menu-group-title">Add-Ons</h3>
+
+        <div class="menu-group-header">
+          <p class="menu-group-desc">Add-Ons are booked after your first session.</p>
+        </div>
 
         <div class="menu-item" data-persona="addons">
           <div class="menu-item-left">
@@ -737,13 +767,24 @@
       <div class="menu-group" data-persona="packages">
         <h3 class="menu-group-title">Deals</h3>
 
-        <div class="menu-group-header">
-          <p class="menu-group-desc">Prepay studio time (engineer included) and get rewarded with discounted hours plus capped release deliverables. Keep it simple, stay consistent, ship music.</p>
+        
+        <div class="deals-intro">
+<div class="menu-group-header">
+          <p class="menu-group-desc">Deals apply to studio sessions — book a session to claim.</p>
         </div>
 
-        <div class="menu-deal-row">
+        
+
+<div class="menu-group-header">
+          <p class="menu-group-desc"><span class="deal-promise">Prepay studio time. Stay consistent. Finish songs.</span> Lock in discounted hours plus included deliverables so you can build momentum without re‑deciding the plan every week.</p>
+          <p class="menu-group-desc deal-choose"><span class="deal-choose-label">Pick your pace:</span> <span class="deal-choose-item"><strong>Starter</strong> = one song in motion</span> · <span class="deal-choose-item"><strong>Builder</strong> = consistent releases</span> · <span class="deal-choose-item"><strong>Headliner</strong> = serious catalog push</span></p>
+        </div>
+        </div>
+
+
+<div class="menu-deal-row">
           <div class="menu-deal-left">
-            <span class="menu-deal-name">Starter - The Momentum Pass</span>
+            <span class="menu-deal-name">Starter — Momentum Pass</span>
             <span class="menu-deal-meta">Includes: 10 studio hours • 1 Final Mix • 1 Stems export</span>
             <span class="menu-deal-perks">Perks: Next-Gig $400 (save $50) • Artist Feature $400 (save $50)</span>
           </div>
@@ -759,7 +800,7 @@
 
         <div class="menu-deal-row">
           <div class="menu-deal-left">
-            <span class="menu-deal-name">Builder - The Catalog Pass</span>
+            <span class="menu-deal-name">Builder — Catalog Pass</span>
             <span class="menu-deal-meta">Includes: 24 studio hours • 3 Final Mixes • 3 Stems exports</span>
             <span class="menu-deal-perks">Perks: Next-Gig $350 (save $100) • Artist Feature $350 (save $100)</span>
           </div>
@@ -775,7 +816,7 @@
 
         <div class="menu-deal-row">
           <div class="menu-deal-left">
-            <span class="menu-deal-name">Headliner - The Release Pass</span>
+            <span class="menu-deal-name">Headliner — Release Pass</span>
             <span class="menu-deal-meta">Includes: 48 studio hours • 6 Final Mixes • 6 Stems exports</span>
             <span class="menu-deal-perks">Perks: Additional Next-Gig $300 (save $150) • Artist Feature $300 (save $150)</span>
           </div>
@@ -794,6 +835,10 @@
       <div class="menu-group" data-persona="location">
         <h3 class="menu-group-title">On-Location</h3>
 
+        <div class="menu-group-header">
+          <p class="menu-group-desc">Offsite capture and event coverage. These routes start with <a href="#quick-start" class="open-plan-intake routing-link">Start with a Plan →</a> so we can scope logistics before anything is confirmed.</p>
+        </div>
+
         <div class="menu-item" data-persona="location">
           <div class="menu-item-left">
             <span class="menu-item-name">Next-Gig Content Capture</span>
@@ -802,26 +847,78 @@
           <span class="menu-item-price">$450</span>
         </div>
 
-        <p class="menu-specialized-header">Specialized (Start with a Plan)</p>
+        
+
 
         <div class="menu-item" data-persona="location">
           <div class="menu-item-left">
             <span class="menu-item-name">Podcast Production</span>
             <span class="menu-item-desc">Full production in-studio or on-location (2-hr min).</span>
-            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
           </div>
           <span class="menu-item-price">$200/hr</span>
         </div>
+
 
         <div class="menu-item" data-persona="location">
           <div class="menu-item-left">
             <span class="menu-item-name">Mobile Recording</span>
             <span class="menu-item-desc">I bring professional recording gear to your space (4-hr min).</span>
-            <a href="#" class="plan-link open-plan-intake">Start with a Plan</a>
           </div>
           <span class="menu-item-price">$100/hr</span>
         </div>
+
+
       </div>
+
+      <!-- ── Specialized ── -->
+      <div class="menu-group" data-persona="specialized">
+        <h3 class="menu-group-title">Specialized</h3>
+
+        <div class="menu-group-header">
+          <p class="menu-group-desc">Higher-touch builds and custom projects. These routes start with <a href="#quick-start" class="open-plan-intake specialized-plan-link">Start with a Plan →</a> so we can scope the vision before anything is confirmed.</p>
+        </div>
+
+        <div class="menu-item" data-persona="specialized">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Full Build <span class="menu-group-note">(Producer-Led)</span></span>
+            <span class="menu-item-desc">Hand your idea over - we build it out together in-session.</span>
+</div>
+          <span class="menu-item-price">$85/hr</span>
+        </div>
+
+        <div class="menu-item" data-persona="specialized">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Artist Feature</span>
+            <span class="menu-item-desc">A filmed, podcast-style feature built around you and your music... <a href="#" class="show-more-link" data-dialog="artistFeatureDialog">Show more</a></span>
+</div>
+          <span class="menu-item-price">$450</span>
+        </div>
+
+        <div class="menu-item" data-persona="specialized">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Studio Buyout + Custom Build</span>
+            <span class="menu-item-desc">Tiny Desk-inspired performance capture - full sound, controlled environment... <a href="#" class="show-more-link" data-dialog="studioBuyoutDialog">Show more</a></span>
+</div>
+          <span class="menu-item-price">Scoping call</span>
+        </div>
+
+        <div class="menu-item" data-persona="specialized">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Podcast Production</span>
+            <span class="menu-item-desc">Full production in-studio or on-location (2-hr min).</span>
+</div>
+          <span class="menu-item-price">$200/hr</span>
+        </div>
+
+        <div class="menu-item" data-persona="specialized">
+          <div class="menu-item-left">
+            <span class="menu-item-name">Mobile Recording</span>
+            <span class="menu-item-desc">I bring professional recording gear to your space (4-hr min).</span>
+</div>
+          <span class="menu-item-price">$100/hr</span>
+        </div>
+      </div>
+
 
     </div>
 
@@ -938,117 +1035,96 @@ Coffee bar on-site - pour-overs between takes to reset and listen back. Mini fri
 <h2 data-reveal="">What Artists Are Saying</h2>
 <!-- Star rating -->
 <div class="testimonial-stars" data-reveal="">
-<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+<span class="star">&starf;</span><span class="star">&starf;</span><span class="star">&starf;</span><span class="star">&starf;</span><span class="star">&starf;</span>
 </div>
-<!-- Primary testimonials (always visible) - strongest first -->
-<div class="testimonial-grid" data-stagger="">
-<div class="testimonial-card">
-  <p class="testimonial-text">“Working with Stephen… absolutely seamless and joyous… professional, fun, and encouraging… speed and precision… astounding.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Azaria Mendoza</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Knows the space inside and out… prompt setups for new ideas… professional solutions for every obstacle… genuinely cares about the best sound, best take, and best result.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Audie Bethea</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Better day in the studio… low stress, super fun environment… without sacrificing productivity… recommend working with him in a heartbeat.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Lizzie Waters</span></div>
-</div>
-</div>
-<details class="testimonials-more is-revealed" data-reveal="">
-  <summary class="testimonials-more-btn">Read more reviews</summary>
-  <div class="testimonial-grid testimonial-grid-expanded">
-<div class="testimonial-card">
-  <p class="testimonial-text">“Works through the recording process efficiently… keeps the energy right… leave with takes you’re actually proud of… professional, creative, and relaxed.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Charles Malcolm</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Gave my music live, spontaneous, raw energy… every take feels like a performance… enthusiastic audience… studio musician and engineer.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Jack Frank</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Welcoming, professional, incredibly organized… keeps all our recording files dialed and up to date… huge for getting songs to their best version… genuinely in great hands.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Daniel Ward</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“First time in a studio… nervous… he was so supportive it felt natural immediately… patiently helped build my vision… make it come to life.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Marina Ilyas</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Helped my band record our first album… mixed it super tight… worked within our constraints… great drummer, great studio… phenomenal photographer.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Daze Tenneti</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Multi-instrumentalist and songwriter… valuable creative partner… humility to let artists work… passion to put you in your most inspired state.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Joseph Canas</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Incredibly reliable… understands the assignment… calling audibles on the fly… calm, collaborative energy… makes every project run smoother.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Chine Emeahara</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Nervous about recording our podcast… made us completely comfortable… calm, professional, and encouraging… smooth and natural.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Shauvanna Kumar</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Recording our band’s first demo… super flexible and easy to work with… pulled a great mix… made the whole session feel effortless.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Manny LaCarrubba</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Lots of fun… enthusiastic and energetic… knowledge to make high-quality recordings… run great jam sessions.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Amine Mohamad</span></div>
-</div>
-<div class="testimonial-card">
-  <p class="testimonial-text">“Friend and fellow musician… offers his musicianship… gives you the space… find the feel and sound you hear in your head.”</p>
-  <div class="testimonial-meta"><span class="testimonial-name">— Demian Ibarra</span></div>
-</div>
-  </div>
-  <button class="testimonials-hide-btn" id="hideReviewsBtn" type="button">Hide reviews</button>
-</details>
-  <div class="testimonials-spacer" aria-hidden="true"></div>
-<!-- Expandable additional testimonials -->
 
-<!-- Audio Player -->
-<div class="sp" data-reveal="" id="studioPlayer">
-<div class="sp-head">
-<h3>Tracks from the Studio</h3>
-<p>Hear some samples of what's been created here.</p>
+<!-- V5 TESTIMONIALS + PLAYER LAYOUT -->
+<div class="v5-layout" data-reveal="">
+
+  <!-- TESTIMONIALS COLUMN -->
+  <div class="v5-reviews-col">
+    <div class="v5-console" id="v5Console">
+      <div class="v5-console-screen">
+        <div class="v5-console-hud">
+          <div class="v5-console-speaker" id="v5SpeakerName"></div>
+          <div class="v5-console-index" id="v5ConsoleIndex"></div>
+        </div>
+        <div class="v5-console-dialogue" id="v5ConsoleDialogue">
+          <div class="v5-console-text" id="v5DialogueText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- nav -->
+    <div class="v5-tcard-nav">
+      <span class="v5-tcard-counter"><b id="v5RevIdx">1</b> of <b id="v5RevTotal">&mdash;</b></span>
+      <div class="v5-tcard-dots" id="v5DotsWrap" role="tablist" aria-label="Testimonial pages"></div>
+      <div class="v5-tcard-arrows">
+        <button class="v5-arrow-btn" id="v5BtnPrevRev" aria-label="Previous testimonials">&larr;</button>
+        <button class="v5-arrow-btn" id="v5BtnNextRev" aria-label="Next testimonials">&rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYER COLUMN -->
+  <div class="sp" id="studioPlayer">
+    <div class="sp-head">
+      <h3>Tracks from the Studio</h3>
+      <p>Hear some samples of what&rsquo;s been created here.</p>
+    </div>
+
+    <div class="sp-display">
+      <div class="sp-disc" id="spDisc"><span class="sp-disc-note">&#9835;</span></div>
+      <div class="sp-track-info">
+        <div class="sp-title" id="spTitle"><span class="sp-title-inner">Press play</span></div>
+        <div class="sp-sub" id="spSub">&mdash;</div>
+        <div class="sp-counter-row">
+          <div class="sp-counter" id="spCounter"></div>
+          <div class="sp-plays" id="spPlays"></div>
+        </div>
+        <div class="sp-error" id="spError">Track unavailable &mdash; skipping&hellip;</div>
+      </div>
+    </div>
+
+    <div class="sp-progress-wrap" id="spProgressWrap">
+      <div class="sp-progress-bar" id="spProgressBar"></div>
+    </div>
+    <div class="sp-time">
+      <span id="spTimeCurrent">0:00</span>
+      <span id="spTimeDuration">0:00</span>
+    </div>
+
+    <div class="sp-controls">
+      <button class="sp-btn sp-btn-sm" id="spPrev" type="button" aria-label="Previous track">&#9198;</button>
+      <button class="sp-btn sp-btn-play" id="spPlay" type="button" aria-label="Play">&#9654;</button>
+      <button class="sp-btn sp-btn-sm" id="spNext" type="button" aria-label="Next track">&#9197;</button>
+      <div class="sp-vol">
+        <button class="sp-btn sp-btn-vol" id="spMute" type="button" aria-label="Mute">&#128266;</button>
+        <input class="sp-vol-slider" id="spVol" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Volume"/>
+      </div>
+    </div>
+
+    <div class="sp-shuffle">
+      <span>or</span>
+      <button id="v5BtnShuffle" type="button">shuffle tracks &nbsp;&#8644;</button>
+    </div>
+
+    <audio id="studioAudio" preload="none"></audio>
+  </div>
+
 </div>
-<div class="sp-display">
-<div class="sp-disc" id="spDisc"><span class="sp-disc-note">&#9835;</span></div>
-<div class="sp-track-info">
-<div class="sp-title" id="spTitle"><span class="sp-title-inner">Press play</span></div>
-<div class="sp-counter-row">
-<div class="sp-counter" id="spCounter"></div>
-<div class="sp-plays" id="spPlays"></div>
-</div>
-</div>
-</div>
-<div class="sp-progress-wrap" id="spProgressWrap">
-<div class="sp-progress-bar" id="spProgressBar"></div>
-</div>
-<div class="sp-time">
-<span id="spTimeCurrent">0:00</span>
-<span id="spTimeDuration">0:00</span>
-</div>
-<div class="sp-controls">
-<button class="sp-btn sp-btn-sm" id="spPrev" type="button" aria-label="Previous track">&#9198;</button>
-<button class="sp-btn sp-btn-play" id="spPlay" type="button" aria-label="Play">&#9654;</button>
-<button class="sp-btn sp-btn-sm" id="spNext" type="button" aria-label="Next track">&#9197;</button>
-<div class="sp-vol">
-<button class="sp-btn sp-btn-vol" id="spMute" type="button" aria-label="Mute">&#128266;</button>
-<input class="sp-vol-slider" id="spVol" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Volume"/>
-</div>
-</div>
-<audio id="studioAudio" preload="none"></audio>
-</div>
+
+<p class="v5-kb-hint" data-reveal="">
+  Keyboard: <kbd>&larr;</kbd><kbd>&rarr;</kbd> reviews &middot; <kbd>Space</kbd> play/pause &middot; <kbd>N</kbd> next track
+</p>
+
 <!-- Studio Promise -->
 <div class="studio-promise" data-reveal="">
 <h3>The Studio Promise</h3>
 <ul>
 <li><strong>Presence over pressure</strong> - Sessions are designed to feel focused, not rushed.</li>
 <li><strong>Human before technical</strong> - The gear serves the song, not the other way around.</li>
-<li><strong>Guided, not directed</strong> - I’m here to support your vision, not overwrite it.</li>
+<li><strong>Guided, not directed</strong> - I'm here to support your vision, not overwrite it.</li>
 <li><strong>Take something home</strong> - Every session ends with something you can listen to, build on, or share.</li>
 </ul>
 </div>
@@ -1224,7 +1300,7 @@ This policy protects reserved time and preparation work. Sessions are built arou
 <footer class="premium-footer">
 <div class="footer-inner">
 <h4>Studio San Francisco</h4>
-<div class="footer-contact"><a href="tel:+14153264531">(415) 326-4531</a><span class="footer-dot">•</span><a href="mailto:hello@bookthestudiosf.com">hello@bookthestudiosf.com</a><span class="footer-dot">•</span><a href="https://www.instagram.com/thestudiosf/" rel="noopener" target="_blank">@thestudiosf</a></div>
+<div class="footer-contact"><a href="tel:+14153264531">(415) 326-4531</a><span class="footer-dot">•</span><a href="https://www.instagram.com/thestudiosf/" rel="noopener" target="_blank">@thestudiosf</a></div>
 <address class="footer-address"><a href="https://maps.google.com/?q=2025+McKinnon+Ave,+San+Francisco,+CA+94124" rel="noopener" target="_blank">2025 McKinnon Ave, San Francisco, CA 94124</a> &nbsp;·&nbsp; Inside Secret Studios</address>
 <div class="footer-copy">&copy; <span id="year"></span> Studio San Francisco</div>
 </div>

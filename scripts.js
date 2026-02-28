@@ -2,13 +2,11 @@
    STUDIO SAN FRANCISCO — scripts.js (Refactored)
    ═══════════════════════════════════════════════════════════════
 
-   PRE-LAUNCH CHECKLIST — FORMS & CALENDLY
+   FORMS & CALENDLY
    =========================================
-   The following forms capture data on the frontend but do NOT send
-   to a backend yet. Before launch, connect each to Formspree,
-   Netlify Forms, EmailJS, or a custom API endpoint.
+   Forms are handled by Netlify Forms (data-netlify="true").
 
-   Forms that need backend:
+   Forms:
      1. #walkthroughForm  — Quick Start: tour/kickoff intake
      2. #launchForm       — Quick Start: session intake ($100 intro)
 
@@ -987,7 +985,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Light mode needs stronger opacity to be visible
     function getOpacityMultiplier() {
-      return isLightTheme() ? 2.2 : 1.0;
+      return isLightTheme() ? 3.5 : 1.0;
     }
 
     function resizeCanvas() {
@@ -1300,44 +1298,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ═══════════════════════════════════════════════════════════════
-     13b. STUDIO PLAYER (compact, skip-based)
+     13b. STUDIO PLAYER (v5 — enhanced with testimonials)
      ═══════════════════════════════════════════════════════════════ */
 
-  var spTracks = [
-    'audio/Cry About It - Audie Bethea feat. Azaria Mendoza - 04 15 2025.mp3',
-    'audio/Queen Snake - Audie Bethea feat. Lizzie Waters - 03 27 2025.mp3',
-    'audio/May Queen (demo) - Charles Malcolm - 08 01 2024.mp3',
-    'audio/My Observation (demo) - Amine Mohamad - 01 24 2024.mp3',
-    'audio/Oh So What (LIVE) - Jack Frank - 06 20 2023.mp3',
-    'audio/Perfect Days (won\'t last) (demo) - Demian Ibarra - 05 22 2025.mp3',
-    'audio/Poetry (demo) - Marina Ilyas - 7 9 2023.mp3',
-    'audio/Waited Too Long (demo) - Joseph Anthony Canas - 03 22 2023.mp3',
-    'audio/Graveyard Dance (LIVE:acoustic) - Jake Pepp - 03 28 2023.mp3',
-    'audio/Revenge (LIVE) - Banned Margera - 07 24 2023.mp3',
-    'audio/Rocketship (LIVE) - Burn Journal - 07 16 2025.mp3',
-    'audio/Shorty Sax - feat. Gordon Ramos - 02 25 2023.mp3',
-    'audio/About u - 05 02 2022.mp3',
-    'audio/Call me - 12 28 2024.mp3',
-    'audio/Crazy for You - 01 13 2025.mp3',
-    'audio/Lost in my Mind - 08 14 2025.mp3',
-    'audio/Moonlight One - 01 29 2025.mp3',
-    'audio/Otherside - 06 20 2024.mp3',
-    'audio/Plugged In - 10 27 2023.mp3',
-    'audio/Soldier - 06 20 2024.mp3',
-    'audio/Soldier On - 06 20 2024.mp3',
-    'audio/Three Minutes - 03 03 2022.mp3',
-    'audio/TO ME - 07 31 2024.mp3',
-    'audio/Underwater (Stay with Me) - 04 26 2022.mp3',
-    'audio/WE WERE TOO - 09 10 2023.mp3'
+  // ── TESTIMONIALS DATA ──────────────────────────────────────────
+  var V5_TESTIMONIALS = [
+    { author:"Azaria Mendoza",   quote:"\u201CWorking with Stephen on a music track for a film was absolutely seamless and joyous. Professional, fun, and encouraging \u2014 the speed and precision he brought was astounding.\u201D" },
+    { author:"Audie Bethea",     quote:"\u201CStephen knows the space inside and out. Prompt setups for new ideas, professional solutions for every obstacle. He genuinely cares about the best sound, best take, and best result.\u201D" },
+    { author:"Lizzie Waters",    quote:"\u201CI couldn\u2019t have asked for a better day in the studio. Low stress, super fun environment \u2014 without ever sacrificing productivity. I\u2019d recommend working with him in a heartbeat.\u201D" },
+    { author:"Charles Malcolm",  quote:"\u201CStephen is great at working through the recording process efficiently while keeping the energy right. You leave with takes you\u2019re actually proud of. Professional, creative, and relaxed.\u201D" },
+    { author:"Jack Frank",       quote:"\u201CStephen\u2019s studio gave my music live, spontaneous, raw energy. Every take feels like a performance. He\u2019s an enthusiastic audience and a skilled studio musician and engineer.\u201D" },
+    { author:"Daniel Ward",      quote:"\u201CWelcoming, professional, incredibly organized. Keeps all our recording files dialed and up to date \u2014 huge for getting songs to their best version. Genuinely in great hands.\u201D" },
+    { author:"Marina Ilyas",     quote:"\u201CFirst time in a studio and I was nervous. Stephen was so supportive it felt natural immediately. He patiently helped build on my vision and make it come to life.\u201D" },
+    { author:"Daze Tenneti",     quote:"\u201CHelped my band record our first album, mixed it super tight, worked within our constraints. Great drummer, great studio, phenomenal photographer.\u201D" },
+    { author:"Joseph Canas",     quote:"\u201CHis skill as a multi-instrumentalist and songwriter makes him a valuable creative partner. He has the humility to let artists work and the passion to put you in your most inspired state.\u201D" },
+    { author:"Chine Emeahara",   quote:"\u201CIncredibly reliable, understands the assignment. Calm, collaborative energy \u2014 calling audibles on the fly. He makes every project run smoother.\u201D" },
+    { author:"Shauvanna Kumar",  quote:"\u201CWe were nervous about recording our podcast. Stephen made us completely comfortable \u2014 calm, professional, and encouraging. It felt smooth and natural from the start.\u201D" },
+    { author:"Manny LaCarrubba", quote:"\u201CSuper flexible and easy to work with. He pulled a great mix and made the whole session feel effortless \u2014 our band\u2019s first demo couldn\u2019t have gone better.\u201D" },
+    { author:"Amine Mohamad",    quote:"\u201CWorking with Stephen was lots of fun \u2014 very enthusiastic and energetic. He has the knowledge to make high-quality recordings and run great jam sessions.\u201D" },
+    { author:"Demian Ibarra",    quote:"\u201CStephen is a friend and a fellow musician. He offers his musicianship and gives you the space necessary to find the feel and sound you hear in your head.\u201D" }
   ];
 
-  // Display names = filenames minus the "audio/" prefix and ".mp3" extension
+  // ── TRACK DATA ─────────────────────────────────────────────────
+  var spTracks = [
+    'audio/May Queen (demo) - Charles Malcolm - 08 01 2024.mp3',
+    'audio/Oh So What (LIVE) - Jack Frank - 06 20 2023.mp3',
+    'audio/Waited Too Long (demo) - Joseph Anthony Canas - 03 22 2023.mp3',
+    'audio/Holdin On (LIVE-acoustic) - Robert Halverson - 05 9 2023.mp3',
+    'audio/Tour Bus - Burn Journal - 7 2 2025.mp3',
+    'audio/Graveyard Dance (LIVE-acoustic) - Jake Pepp - 03 28 2023.mp3',
+    'audio/Rocketship (LIVE) - Burn Journal - 02 07 2025.mp3',
+    'audio/Revenge (LIVE) - Banned Margera - 07 24 2023.mp3',
+    'audio/Perfect Days (won\'t last) (demo) - Demian Ibarra - 05 22 2025.mp3',
+    'audio/My Observation (demo) - Amine Mohamad - 01 24 2024.mp3',
+    'audio/Cry About It - Audie Bethea feat. Azaria Mendoza - 04 15 2025.mp3',
+    'audio/Shorty Sax - feat. Gordon Ramos - 02 25 2023.mp3',
+    'audio/Queen Snake - Audie Bethea feat. Lizzie Waters - 03 27 2025.mp3',
+    'audio/Poetry (demo) - Marina Ilyas - 7 9 2023.mp3',
+    'audio/IMPATIENLY WAITING - 12 27 2025.mp3',
+    'audio/Lost in my Mind - 08 14 2025.mp3',
+    'audio/TO ME - 07 31 2024.mp3',
+    'audio/Crazy for You - 01 13 2025.mp3',
+    'audio/Call me - 12 28 2024.mp3',
+    'audio/Moonlight One - 01 29 2025.mp3',
+    'audio/Underwater (Stay with Me) - 04 26 2022.mp3',
+    'audio/Soldier - 06 20 2024.mp3',
+    'audio/About u - 05 02 2022.mp3',
+    'audio/Plugged In - 10 27 2023.mp3',
+    'audio/Otherside - 06 20 2024.mp3',
+    'audio/Soldier On - 06 20 2024.mp3',
+    'audio/WE WERE TOO - 09 10 2023.mp3',
+    'audio/Three Minutes - 03 03 2022.mp3'
+  ];
+
   var spNames = spTracks.map(function (p) { return p.replace('audio/', '').replace(/\.mp3$/i, ''); });
 
+  // ── DOM REFS ───────────────────────────────────────────────────
   var spAudio    = document.getElementById('studioAudio');
   var spTitle    = document.getElementById('spTitle');
+  var spSubEl    = document.getElementById('spSub');
   var spCounter  = document.getElementById('spCounter');
   var spPlaysEl  = document.getElementById('spPlays');
+  var spErrorEl  = document.getElementById('spError');
   var spDisc     = document.getElementById('spDisc');
   var spPlay     = document.getElementById('spPlay');
   var spPrev     = document.getElementById('spPrev');
@@ -1348,14 +1370,27 @@ document.addEventListener('DOMContentLoaded', function () {
   var spWrap     = document.getElementById('spProgressWrap');
   var spCur      = document.getElementById('spTimeCurrent');
   var spDur      = document.getElementById('spTimeDuration');
+
+  // ── STATE ──────────────────────────────────────────────────────
   var spIdx      = 0;
+  var spUserSetVolume = false; // prevents hero click from overriding user volume
+
   var spPlaying  = false;
+  var spIdle     = true;  // true until user first interacts
+  var spErrorTimeout = null;
 
   function spNextIdx(dir) {
     return (spIdx + dir + spTracks.length) % spTracks.length;
   }
 
-  // Play-count tracking (localStorage) — version resets counts on launch
+  function spShufflePick() {
+    if (spTracks.length <= 1) return 0;
+    var n = spIdx;
+    while (n === spIdx) n = Math.floor(Math.random() * spTracks.length);
+    return n;
+  }
+
+  // ── PLAY COUNT TRACKING ────────────────────────────────────────
   var SP_COUNT_VERSION = '2';
   var spPlayCounts = {};
   try {
@@ -1365,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     spPlayCounts = JSON.parse(localStorage.getItem('spPlayCounts') || '{}');
   } catch (e) { spPlayCounts = {}; }
-  var spPlayCounted = false;  // true once 5 s listened on current track
+  var spPlayCounted = false;
 
   function spSaveCount(idx) {
     var key = spTracks[idx];
@@ -1385,19 +1420,48 @@ document.addEventListener('DOMContentLoaded', function () {
     if (miniPlays) miniPlays.textContent = txt;
   }
 
-  // Marquee for long titles
+  // ── SONG PARSER ────────────────────────────────────────────────
+  var SP_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function spParseName(name) {
+    var parts = name.split(' - ').map(function (s) { return s.trim(); });
+    var title  = parts[0] || name;
+    var artist = null;
+    var dateStr = null;
+
+    // Last part is always the date (MM DD YYYY)
+    if (parts.length >= 2) {
+      var last = parts[parts.length - 1];
+      var dm = last.match(/^(\d{1,2})\s+(\d{1,2})\s+(\d{4})$/);
+      if (dm) {
+        var mo = parseInt(dm[1], 10) - 1;
+        var day = parseInt(dm[2], 10);
+        var yr = dm[3];
+        var suffix = (day === 1 || day === 21 || day === 31) ? 'st' :
+                     (day === 2 || day === 22) ? 'nd' :
+                     (day === 3 || day === 23) ? 'rd' : 'th';
+        dateStr = 'Recorded ' + SP_MONTHS[mo] + ' ' + day + suffix + ', ' + yr;
+      }
+    }
+
+    // If 3+ parts, middle parts are artist; if 2 parts (title - date), no artist
+    if (parts.length >= 3) {
+      artist = parts.slice(1, -1).join(' \u2014 ');
+    }
+
+    return { title: title, artist: artist, date: dateStr, rest: null };
+  }
+
+  // ── MARQUEE ────────────────────────────────────────────────────
   function spCheckMarquee() {
     if (!spTitle) return;
     var inner = spTitle.querySelector('.sp-title-inner');
     if (!inner) return;
     spTitle.classList.remove('is-scrolling');
-    // Re-flow needed before measuring
     var overflow = inner.scrollWidth - spTitle.clientWidth;
     if (overflow > 6) {
       var dur = Math.max(6, Math.round(overflow / 28)) + 's';
       spTitle.style.setProperty('--marquee-distance', '-' + overflow + 'px');
       spTitle.style.setProperty('--marquee-dur', dur);
-      // slight delay so user reads title before it scrolls
       setTimeout(function () { spTitle.classList.add('is-scrolling'); }, 1200);
     }
   }
@@ -1409,19 +1473,60 @@ document.addEventListener('DOMContentLoaded', function () {
     return m + ':' + (sec < 10 ? '0' : '') + sec;
   }
 
+  // ── VOLUME FILL ────────────────────────────────────────────────
+  function spUpdateVolFill(val) {
+    if (spVol) spVol.style.setProperty('--vol-pct', (val * 100) + '%');
+  }
+  spUpdateVolFill(0.8);
+
+  // ── WAKE FROM IDLE ─────────────────────────────────────────────
+  function spWake() {
+    if (!spIdle) return;
+    spIdle = false;
+    var parsed = spParseName(spNames[spIdx]);
+    var inner = spTitle && spTitle.querySelector('.sp-title-inner');
+    if (inner) inner.textContent = parsed.title;
+    var wakeSubText = parsed.artist || '';
+    if (parsed.date) wakeSubText += (wakeSubText ? ' \u00b7 ' : '') + parsed.date;
+    if (spSubEl) spSubEl.textContent = wakeSubText || '\u2014';
+    if (spCounter) spCounter.textContent = 'Track ' + (spIdx + 1) + ' of ' + spTracks.length;
+    spUpdatePlaysUI(spIdx);
+    if (spAudio) {
+      spAudio.src = spTracks[spIdx];
+      spAudio.load();
+    }
+    setTimeout(spCheckMarquee, 60);
+    // Update mini-player title
+    var miniTitle = document.getElementById('miniTitle');
+    if (miniTitle) miniTitle.textContent = spNames[spIdx];
+  }
+
+  // ── LOAD TRACK ─────────────────────────────────────────────────
   function spLoad(idx, autoplay) {
     spIdx = idx;
     spPlayCounted = false;
+    clearTimeout(spErrorTimeout);
+    if (spErrorEl) spErrorEl.classList.remove('visible');
+
+    var parsed = spParseName(spNames[idx]);
     var inner = spTitle && spTitle.querySelector('.sp-title-inner');
-    if (inner) inner.textContent = spNames[idx];
+
+    if (spIdle) {
+      spIdle = false;
+    }
+
+    if (inner) inner.textContent = parsed.title;
     if (spTitle) spTitle.classList.remove('is-scrolling');
+    var subText = parsed.artist || '';
+    if (parsed.date) subText += (subText ? ' \u00b7 ' : '') + parsed.date;
+    if (spSubEl) spSubEl.textContent = subText || '\u2014';
     if (spCounter) spCounter.textContent = 'Track ' + (idx + 1) + ' of ' + spTracks.length;
     spUpdatePlaysUI(idx);
     if (spBar) spBar.style.width = '0';
     if (spCur) spCur.textContent = '0:00';
     if (spDur) spDur.textContent = '0:00';
 
-    // Update mini-player title too
+    // Update mini-player title
     var miniTitle = document.getElementById('miniTitle');
     if (miniTitle) miniTitle.textContent = spNames[idx];
 
@@ -1435,24 +1540,31 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Check marquee after layout settles
     setTimeout(spCheckMarquee, 60);
   }
 
+  // ── TOGGLE PLAY/PAUSE ─────────────────────────────────────────
   function spToggle() {
     if (!spAudio) return;
+    if (spIdle) {
+      spWake();
+      var p = spAudio.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+      return;
+    }
     if (!spAudio.src || spAudio.src === window.location.href) {
       spLoad(spIdx, true);
       return;
     }
     if (spAudio.paused) {
-      var p = spAudio.play();
-      if (p && typeof p.catch === 'function') p.catch(function () {});
+      var p2 = spAudio.play();
+      if (p2 && typeof p2.catch === 'function') p2.catch(function () {});
     } else {
       spAudio.pause();
     }
   }
 
+  // ── AUDIO EVENTS ───────────────────────────────────────────────
   if (spAudio) {
     spAudio.volume = 0.8;
 
@@ -1466,6 +1578,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var miniDisc = document.getElementById('miniDisc');
       if (miniDisc) miniDisc.classList.add('is-spinning');
       spMiniShowControls();
+      // Hero play icon sync
+      var hpb = document.getElementById('heroPlayBtn');
+      if (hpb) {
+        var hi = hpb.querySelector('.hero-play-icon');
+        if (hi) hi.innerHTML = '&#10074;&#10074;';
+      }
     });
 
     spAudio.addEventListener('pause', function () {
@@ -1475,6 +1593,12 @@ document.addEventListener('DOMContentLoaded', function () {
       // Mini-player sync
       var miniPlay = document.getElementById('miniPlay');
       if (miniPlay) miniPlay.innerHTML = '&#9654;';
+      // Hero play icon sync
+      var hpb = document.getElementById('heroPlayBtn');
+      if (hpb) {
+        var hi = hpb.querySelector('.hero-play-icon');
+        if (hi) hi.innerHTML = '&#9654;';
+      }
       var miniDisc = document.getElementById('miniDisc');
       if (miniDisc) miniDisc.classList.remove('is-spinning');
     });
@@ -1487,7 +1611,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Mini-player progress line
       var miniPF = document.getElementById('miniProgressFill');
       if (miniPF) miniPF.style.width = pct + '%';
-      // Count a play after 5 s of listening
+      // Count a play after 5 s
       if (!spPlayCounted && spAudio.currentTime >= 5) {
         spPlayCounted = true;
         spSaveCount(spIdx);
@@ -1499,19 +1623,36 @@ document.addEventListener('DOMContentLoaded', function () {
       if (spDur) spDur.textContent = spFmt(spAudio.duration);
     });
 
+    // Auto-advance on track end
     spAudio.addEventListener('ended', function () {
       var next = spNextIdx(1);
       spLoad(next, true);
     });
+
+    // Error handling — show message and auto-skip
+    spAudio.addEventListener('error', function () {
+      if (spErrorEl) spErrorEl.classList.add('visible');
+      spPlaying = false;
+      if (spPlay) spPlay.innerHTML = '&#9654;';
+      if (spDisc) spDisc.classList.remove('is-spinning');
+      clearTimeout(spErrorTimeout);
+      spErrorTimeout = setTimeout(function () {
+        spLoad(spNextIdx(1), false);
+      }, 2000);
+    });
   }
 
+  // ── PLAYER CONTROLS ────────────────────────────────────────────
   if (spPlay) spPlay.addEventListener('click', spToggle);
 
   if (spNext) spNext.addEventListener('click', function () {
+    if (spIdle) { spWake(); }
     spLoad(spNextIdx(1), spPlaying);
   });
 
+  // Smart prev: restart if >3s in, else previous track
   if (spPrev) spPrev.addEventListener('click', function () {
+    if (spIdle) { spWake(); }
     if (spAudio && spAudio.currentTime > 3) {
       spAudio.currentTime = 0;
     } else {
@@ -1519,20 +1660,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Seek on progress bar click
-  if (spWrap) spWrap.addEventListener('click', function (e) {
-    if (!spAudio || !spAudio.duration) return;
-    var rect = spWrap.getBoundingClientRect();
-    var pct = (e.clientX - rect.left) / rect.width;
-    spAudio.currentTime = pct * spAudio.duration;
+  // Shuffle
+  var v5BtnShuffle = document.getElementById('v5BtnShuffle');
+  if (v5BtnShuffle) v5BtnShuffle.addEventListener('click', function () {
+    if (spIdle) { spWake(); }
+    spLoad(spShufflePick(), spPlaying || true);
   });
 
-  // Volume
+  // Seek on progress bar click + hover thumb
+  if (spWrap) {
+    spWrap.addEventListener('mousemove', function (e) {
+      var r = spWrap.getBoundingClientRect();
+      var pct = ((e.clientX - r.left) / r.width * 100);
+      spWrap.style.setProperty('--seek-pct', Math.max(0, Math.min(100, pct)) + '%');
+    });
+    spWrap.addEventListener('click', function (e) {
+      if (!spAudio || !spAudio.duration) return;
+      var rect = spWrap.getBoundingClientRect();
+      var pct = (e.clientX - rect.left) / rect.width;
+      spAudio.currentTime = pct * spAudio.duration;
+    });
+  }
+
+  // Volume with fill
   if (spVol) spVol.addEventListener('input', function () {
     if (spAudio) {
       spAudio.volume = parseFloat(spVol.value);
       spAudio.muted = false;
       if (spMute) spMute.innerHTML = spAudio.volume < 0.01 ? '&#128263;' : '&#128266;';
+      spUpdateVolFill(spAudio.volume);
     }
   });
 
@@ -1541,6 +1697,225 @@ document.addEventListener('DOMContentLoaded', function () {
     spAudio.muted = !spAudio.muted;
     spMute.innerHTML = spAudio.muted ? '&#128263;' : '&#128266;';
   });
+
+  // ── GUARDED KEYBOARD SHORTCUTS ─────────────────────────────────
+  function spInFormField() {
+    var el = document.activeElement;
+    if (!el) return false;
+    var tag = el.tagName;
+    return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (spInFormField()) return;
+    var k = e.key.toLowerCase();
+    if (k === ' ') {
+      e.preventDefault();
+      spToggle();
+    }
+    if (k === 'n') {
+      e.preventDefault();
+      if (spIdle) spWake();
+      spLoad(spNextIdx(1), spPlaying || true);
+    }
+    if (k === 'arrowleft') {
+      e.preventDefault();
+      v5RevPage = (v5RevPage - 1 + v5TotalPages) % v5TotalPages;
+      v5RenderReviews();
+    }
+    if (k === 'arrowright') {
+      e.preventDefault();
+      v5RevPage = (v5RevPage + 1) % v5TotalPages;
+      v5RenderReviews();
+    }
+  });
+
+  // ══════════════════════════════════════════════════════════════
+  // V5 TESTIMONIALS (paginated cards with nav)
+  // ══════════════════════════════════════════════════════════════
+
+  var V5_PER_PAGE = 1;
+  var v5RevPage = 0;
+  var v5TotalPages = Math.ceil(V5_TESTIMONIALS.length / V5_PER_PAGE);
+  var v5RevAnimating = false;
+
+  // ── TYPEWRITER UTILITY ──────────────────────────────────────────
+  var v5TypeState = { timer: null, raf: null, typing: false, fullText: '' };
+
+  function v5CancelType() {
+    if (v5TypeState.timer) { clearTimeout(v5TypeState.timer); v5TypeState.timer = null; }
+    if (v5TypeState.raf) { cancelAnimationFrame(v5TypeState.raf); v5TypeState.raf = null; }
+    v5TypeState.typing = false;
+  }
+
+  function v5SkipType() {
+    if (!v5TypeState.typing) return;
+    v5CancelType();
+    var el = document.getElementById('v5DialogueText');
+    if (el) el.innerHTML = v5TypeState.fullText + '<span class="v5-cursor"></span>';
+  }
+
+  function v5TypeText(text, el, onDone) {
+    v5CancelType();
+    v5TypeState.fullText = text;
+    v5TypeState.typing = true;
+    el.innerHTML = '<span class="v5-cursor"></span>';
+    var i = 0;
+    var charDelay = 18;
+
+    function typeNext() {
+      if (!v5TypeState.typing) return;
+      if (i < text.length) {
+        el.innerHTML = text.slice(0, i + 1) + '<span class="v5-cursor"></span>';
+        i++;
+        v5TypeState.timer = setTimeout(typeNext, charDelay);
+      } else {
+        v5TypeState.typing = false;
+        if (onDone) onDone();
+      }
+    }
+    typeNext();
+  }
+
+  // Click/tap dialogue to skip typing
+  (function () {
+    var dialogue = document.getElementById('v5ConsoleDialogue');
+    if (dialogue) {
+      dialogue.addEventListener('click', function (e) {
+        if (v5TypeState.typing) {
+          e.stopPropagation();
+          v5SkipType();
+        }
+      });
+    }
+  })();
+
+  function v5BuildDots() {
+    var wrap = document.getElementById('v5DotsWrap');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (var i = 0; i < v5TotalPages; i++) {
+      var b = document.createElement('button');
+      b.className = 'v5-tdot' + (i === v5RevPage ? ' active' : '');
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Page ' + (i + 1));
+      (function (idx) {
+        b.addEventListener('click', function () { v5RevPage = idx; v5RenderReviews(); });
+      })(i);
+      wrap.appendChild(b);
+    }
+  }
+
+  function v5UpdateDots() {
+    var wrap = document.getElementById('v5DotsWrap');
+    if (!wrap) return;
+    var dots = wrap.querySelectorAll('.v5-tdot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === v5RevPage);
+    }
+  }
+
+  function v5RenderReviews(animate) {
+    if (animate === undefined) animate = true;
+    var item = V5_TESTIMONIALS[v5RevPage];
+    var speaker = document.getElementById('v5SpeakerName');
+    var index = document.getElementById('v5ConsoleIndex');
+    var textEl = document.getElementById('v5DialogueText');
+    var dialogue = document.getElementById('v5ConsoleDialogue');
+    var revIdx = document.getElementById('v5RevIdx');
+
+    if (!item || !textEl) return;
+
+    var quoteText = item.quote;
+
+    function applyUI() {
+      if (speaker) speaker.textContent = item.author;
+      if (index) index.textContent = 'TESTIMONIAL ' + (v5RevPage + 1) + ' / ' + V5_TESTIMONIALS.length;
+      if (revIdx) revIdx.textContent = v5RevPage + 1;
+      v5UpdateDots();
+    }
+
+    // Cancel any in-progress typing
+    v5CancelType();
+
+    if (!animate || v5RevAnimating) {
+      // Instant render (initial load or rapid nav fallback)
+      applyUI();
+      textEl.innerHTML = quoteText + '<span class="v5-cursor"></span>';
+      return;
+    }
+
+    v5RevAnimating = true;
+
+    // Animate-out
+    if (dialogue) dialogue.classList.add('v5-anim-out');
+
+    setTimeout(function () {
+      applyUI();
+      if (dialogue) dialogue.classList.remove('v5-anim-out');
+
+      // Type the quote
+      try {
+        v5TypeText(quoteText, textEl, function () {
+          v5RevAnimating = false;
+        });
+      } catch (_) {
+        // Fallback: show full text immediately
+        textEl.innerHTML = quoteText + '<span class="v5-cursor"></span>';
+        v5RevAnimating = false;
+      }
+
+      // Safety: unlock animating state if typing takes too long
+      setTimeout(function () { v5RevAnimating = false; }, 12000);
+    }, 150);
+  }
+
+  // Testimonial nav buttons
+  var v5BtnPrev = document.getElementById('v5BtnPrevRev');
+  var v5BtnNext = document.getElementById('v5BtnNextRev');
+  if (v5BtnPrev) v5BtnPrev.addEventListener('click', function () {
+    v5RevPage = (v5RevPage - 1 + v5TotalPages) % v5TotalPages;
+    v5RenderReviews();
+  });
+  if (v5BtnNext) v5BtnNext.addEventListener('click', function () {
+    v5RevPage = (v5RevPage + 1) % v5TotalPages;
+    v5RenderReviews();
+  });
+
+  // Touch / swipe on testimonials
+  (function () {
+    var consoleEl = document.getElementById('v5Console');
+    if (!consoleEl) return;
+    var touchStartX = 0, touchStartY = 0, swiping = false;
+
+    consoleEl.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      swiping = true;
+    }, { passive: true });
+
+    consoleEl.addEventListener('touchend', function (e) {
+      if (!swiping) return;
+      swiping = false;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) {
+          v5RevPage = (v5RevPage + 1) % v5TotalPages;
+        } else {
+          v5RevPage = (v5RevPage - 1 + v5TotalPages) % v5TotalPages;
+        }
+        v5RenderReviews();
+      }
+    }, { passive: true });
+  })();
+
+  // ── INIT ───────────────────────────────────────────────────────
+  var v5RevTotal = document.getElementById('v5RevTotal');
+  if (v5RevTotal) v5RevTotal.textContent = V5_TESTIMONIALS.length;
+  v5BuildDots();
+  v5RenderReviews(false);
+
 
   /* ── MINI-PLAYER (sticky bottom bar) ─────────────────────── */
   var miniPlayer   = document.getElementById('miniPlayer');
@@ -1576,7 +1951,66 @@ document.addEventListener('DOMContentLoaded', function () {
       spLoad(0, true);
     });
 
-    // Mini controls wired to shared audio
+    // Hero play prompt — true toggle (play/pause) + gentle ramp on first play
+    var heroPlayBtn = document.getElementById('heroPlayBtn');
+    var heroListen = document.getElementById('heroListen');
+
+    function heroSetIcon(isPlaying){
+      if (!heroPlayBtn) return;
+      var icon = heroPlayBtn.querySelector('.hero-play-icon');
+      if (!icon) return;
+      icon.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+      heroPlayBtn.setAttribute('aria-label', isPlaying ? 'Pause studio samples' : 'Play studio samples');
+    }
+
+    if (heroPlayBtn) heroPlayBtn.addEventListener('click', function () {
+      if (!spAudio) return;
+
+      // If currently playing, pause immediately (true toggle)
+      if (!spAudio.paused && !spAudio.ended) {
+        heroSetIcon(false);
+        spAudio.pause();
+        return;
+      }
+
+      // Starting playback: reflect intent immediately
+      heroSetIcon(true);
+
+      // Gentle start: if the user hasn't touched volume, begin lower and ramp up.
+      if (!spUserSetVolume) {
+        var rampTarget = Math.min(0.6, (spAudio.volume || 0.8));
+        var startVol = Math.min(0.3, (spAudio.volume || 0.8));
+        spAudio.volume = startVol;
+        var steps = 11;
+        var step = 0;
+        var volTimer = setInterval(function () {
+          step++;
+          var t = step / steps;
+          spAudio.volume = startVol + (rampTarget - startVol) * t;
+          if (step >= steps) clearInterval(volTimer);
+        }, 50);
+      }
+
+      // Ensure a track is loaded then play
+      if (!spAudio.src || spAudio.src === window.location.href) {
+        spLoad(0, true);
+      } else {
+        var p = spAudio.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+      }
+
+      // If playback is blocked/failed, revert icon shortly after.
+      setTimeout(function () {
+        if (spAudio.paused) heroSetIcon(false);
+      }, 450);
+
+      // Make sure mini-player is visible and in controls state
+      if (miniPlayer && !miniPlayer.classList.contains('is-visible')) {
+        miniPlayer.classList.add('is-visible');
+        document.body.classList.add('has-mini-player');
+      }
+    });
+// Mini controls wired to shared audio
     var miniPlayBtn = document.getElementById('miniPlay');
     if (miniPlayBtn) miniPlayBtn.addEventListener('click', spToggle);
 
