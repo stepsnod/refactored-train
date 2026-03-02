@@ -1,21 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   STUDIO SAN FRANCISCO — scripts.js (Refactored)
-   ═══════════════════════════════════════════════════════════════
-
-   PRE-LAUNCH CHECKLIST — FORMS & CALENDLY
-   =========================================
-   The following forms capture data on the frontend but do NOT send
-   to a backend yet. Before launch, connect each to Formspree,
-   Netlify Forms, EmailJS, or a custom API endpoint.
-
-   Forms that need backend:
-     1. #walkthroughForm  — Quick Start: tour/kickoff intake
-     2. #launchForm       — Quick Start: session intake ($100 intro)
-
-   Calendly URLs (live):
-     - https://calendly.com/thestudiosf/plan?text_color=004655&primary_color=00c6ff
-     - https://calendly.com/thestudiosf/2hr-intro-launch?text_color=004655&primary_color=00c6ff
-
+   STUDIO SAN FRANCISCO — scripts.js
    ═══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -790,6 +774,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // Also populate any class-based year spans (subpages)
+  document.querySelectorAll('.js-year').forEach(function(el) {
+    el.textContent = new Date().getFullYear();
+  });
 
 
   /* ═══════════════════════════════════════════════════════════════
@@ -1723,6 +1711,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Volume with fill
   if (spVol) spVol.addEventListener('input', function () {
+    spUserSetVolume = true;
     if (spAudio) {
       spAudio.volume = parseFloat(spVol.value);
       spAudio.muted = false;
@@ -2236,26 +2225,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Reach Out form — inline submit (no redirect, stay in modal)
-  var reachOutForm = document.getElementById('reachOutForm');
-  var reachOutSuccess = null;
-  if (reachOutForm && reachOutSuccess) {
-    reachOutForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var data = new FormData(reachOutForm);
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
-      }).then(function () {
-        reachOutForm.style.display = 'none';
-        reachOutSuccess.style.display = 'block';
-      }).catch(function () {
-        reachOutForm.style.display = 'none';
-        reachOutSuccess.style.display = 'block';
-      });
-    });
-  }
+  // Reach Out form — handled by inline handler below (reachOutForm__inlineHandler)
 
   // Close + click-outside handlers for ALL dialogs
   document.querySelectorAll('.dialog-overlay').forEach(function (dialog) {
@@ -2263,23 +2233,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (closeBtn) {
       closeBtn.addEventListener('click', function () {
         closeDialog(dialog);
-        // Reset reach-out form on close
-        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
-          reachOutForm.reset();
-          reachOutForm.style.display = 'grid';
-          reachOutSuccess.style.display = 'none';
-        }
       });
     }
     dialog.addEventListener('click', function (e) {
       if (e.target === dialog) {
         closeDialog(dialog);
-        // Reset reach-out form on click-outside close
-        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
-          reachOutForm.reset();
-          reachOutForm.style.display = 'grid';
-          reachOutSuccess.style.display = 'none';
-        }
       }
     });
   });
@@ -2289,11 +2247,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') {
       document.querySelectorAll('.dialog-overlay.active').forEach(function (dialog) {
         closeDialog(dialog);
-        if (dialog.id === 'reachOutDialog' && reachOutForm && reachOutSuccess) {
-          reachOutForm.reset();
-          reachOutForm.style.display = 'grid';
-          reachOutSuccess.style.display = 'none';
-        }
       });
     }
   });
@@ -2367,3 +2320,198 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, true);
 });
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PORTFOLIO PAGE — portfolio.html
+   Loads from photos.json. Shuffles on every page load.
+   To add photos: edit photos.json only — no HTML changes needed.
+   ═══════════════════════════════════════════════════════════════ */
+
+(function() {
+  if (!document.getElementById('portGrid')) return;
+
+  const grid       = document.getElementById('portGrid');
+  const filtersEl  = document.getElementById('portFilters');
+  const countEl    = document.getElementById('portCount');
+  const emptyEl    = document.getElementById('portEmpty');
+  const lb         = document.getElementById('lightbox');
+  const lbImgWrap  = document.getElementById('lbImgWrap');
+  const lbTitle    = document.getElementById('lbTitle');
+  const lbCat      = document.getElementById('lbCat');
+
+  let allPhotos    = [];   // full shuffled list
+  let visiblePhotos = [];  // currently filtered subset
+  let currentIndex = 0;
+
+  // ── Shuffle (Fisher-Yates) ──────────────────────────────────
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ── Build a tile element ────────────────────────────────────
+  function makeTile(photo, index) {
+    const div = document.createElement('div');
+    div.className = 'port-item';
+    div.dataset.cat   = photo.cat;
+    div.dataset.title = photo.title;
+    div.dataset.index = index;
+
+    // Inner markup
+    const encodedSrc = encodeURI(photo.src);
+    div.innerHTML = `
+      <img
+        src="${encodedSrc}"
+        alt="${photo.title}"
+        loading="lazy"
+        onerror="this.closest('.port-item').style.display='none'"
+      />
+      <div class="port-item-overlay">
+        <div>
+          <div class="port-item-title">${photo.title}</div>
+          <div class="port-item-cat">${photo.catLabel}</div>
+        </div>
+      </div>`;
+
+    // Click → lightbox
+    div.addEventListener('click', () => {
+      currentIndex = visiblePhotos.indexOf(photo);
+      openLb(currentIndex);
+    });
+
+    return div;
+  }
+
+  // ── Render grid for current filter ─────────────────────────
+  function render(cat) {
+    visiblePhotos = cat === 'all' ? allPhotos : allPhotos.filter(p => p.cat === cat);
+    grid.innerHTML = '';
+
+    visiblePhotos.forEach((photo, i) => {
+      const tile = makeTile(photo, i);
+      // Stagger reveal
+      tile.style.transitionDelay = (i * 40) + 'ms';
+      grid.appendChild(tile);
+      // Trigger reflow then reveal
+      requestAnimationFrame(() => requestAnimationFrame(() => tile.classList.add('revealed')));
+    });
+
+    countEl.textContent = visiblePhotos.length
+      ? `${visiblePhotos.length} photo${visiblePhotos.length !== 1 ? 's' : ''}`
+      : '';
+    emptyEl.style.display = visiblePhotos.length === 0 ? 'block' : 'none';
+  }
+
+  // ── Filter buttons ──────────────────────────────────────────
+  function buildFilters(categories) {
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className    = 'filter-btn';
+      btn.dataset.filter = cat.id;
+      btn.textContent  = cat.label;
+      filtersEl.appendChild(btn);
+    });
+
+    filtersEl.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      filtersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.filter);
+    });
+  }
+
+  // ── Lightbox ────────────────────────────────────────────────
+  function openLb(idx) {
+    currentIndex = (idx + visiblePhotos.length) % visiblePhotos.length;
+    const photo  = visiblePhotos[currentIndex];
+    lbImgWrap.innerHTML = '';
+
+    const img = document.createElement('img');
+    img.src = encodeURI(photo.src);
+    img.alt = photo.title;
+    lbImgWrap.appendChild(img);
+
+    lbTitle.textContent = photo.title;
+    lbCat.textContent   = photo.catLabel;
+
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.getElementById('lbPrev').addEventListener('click', () => openLb(currentIndex - 1));
+  document.getElementById('lbNext').addEventListener('click', () => openLb(currentIndex + 1));
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLb();
+    if (e.key === 'ArrowLeft')   openLb(currentIndex - 1);
+    if (e.key === 'ArrowRight')  openLb(currentIndex + 1);
+  });
+
+  // ── Load photos.json and boot ───────────────────────────────
+  fetch('photos.json')
+    .then(r => r.json())
+    .then(data => {
+      // Build a lookup of cat id → label
+      const catLabels = {};
+      data.categories.forEach(c => { catLabels[c.id] = c.label; });
+
+      // Attach label to each photo, then shuffle
+      allPhotos = shuffle(
+        data.photos.map(p => ({ ...p, catLabel: catLabels[p.cat] || p.cat }))
+      );
+
+      buildFilters(data.categories);
+      render('all');
+    })
+    .catch(() => {
+      grid.innerHTML = '<p style="color:var(--muted2);text-align:center;padding:60px 0;">Could not load photos. Make sure photos.json is in the same folder.</p>';
+    });
+
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   BLOG PAGE — blog.html
+   Only runs when #notifyForm or .blog-featured is present.
+   ═══════════════════════════════════════════════════════════════ */
+
+(function() {
+  if (!document.getElementById('notifyForm') && !document.querySelector('.blog-featured')) return;
+
+
+
+const notifyForm = document.getElementById('notifyForm');
+const csSuccess = document.getElementById('csSuccess');
+if (notifyForm) {
+  notifyForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var fd = new FormData(notifyForm);
+    if (!fd.get('form-name')) fd.set('form-name', 'blog-notify');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(fd).toString()
+    }).then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      notifyForm.style.display = 'none';
+      if (csSuccess) csSuccess.style.display = 'block';
+    }).catch(function() {
+      notifyForm.style.display = 'none';
+      if (csSuccess) csSuccess.style.display = 'block';
+    });
+  });
+}
+
+})();

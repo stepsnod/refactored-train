@@ -50,7 +50,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Structured Data -->
 <script type="application/ld+json">
   {
@@ -203,9 +203,10 @@
 <span class="topname"><strong>Studio San Francisco</strong></span>
 </a>
 <nav aria-label="Primary navigation" class="topnav">
-<a href="#quick-start">Get Started</a>
 <a href="#menu">Services</a>
-<a href="#photos">Gallery</a>
+<a href="#photos">The Studio</a>
+<a href="portfolio.html">Visuals</a>
+<a href="blog.html">Blog</a>
 <a href="#testimonials">Proof</a>
 <a href="#faq">FAQ</a>
 </nav>
@@ -234,7 +235,9 @@
 <li><a aria-current="page" href="#home">Home</a></li>
 <li><a href="#quick-start">Get Started</a></li>
 <li><a href="#menu">Services</a></li>
-<li><a href="#photos">Gallery</a></li>
+<li><a href="#photos">The Studio</a></li>
+<li><a href="portfolio.html">Visuals</a></li>
+<li><a href="blog.html">Blog</a></li>
 <li><a href="#testimonials">Proof</a></li>
 <li><a href="#engineer">Meet Your Engineer</a></li>
 <li><a href="#faq">FAQ</a></li>
@@ -243,11 +246,6 @@
 <li><a href="#noise">Studio Policies</a></li>
 <li><a href="#deposit">Deposit &amp; Cancellation</a></li>
 </ul>
-</div>
-<div class="sidebar-bottom">
-<div class="cta-stack">
-<a class="btn btn-nav-cta" href="#quick-start">Get Started</a>
-</div>
 </div>
 </aside>
 <!-- THEME FAB (floating toggle) -->
@@ -399,262 +397,213 @@
 <input name="form-name" type="hidden" value="walkthrough-intake"/>
 <p class="hidden"><label>Don't fill this out: <input name="bot-field"/></label></p>
 <div aria-atomic="true" aria-live="polite" class="form-status"></div>
+
 <div style="margin-bottom:24px;">
 <button class="intake-back-btn back-btn" type="button">← Back</button>
 </div>
+
 <div style="text-align:center; margin-bottom:40px;">
 <h3 style="font-size:32px; font-weight:500; margin:0 0 12px; color:var(--text); letter-spacing:-0.02em;">Start with a Plan</h3>
 <p style="font-size:16px; color:var(--muted); margin:0;">Tell me a bit about yourself so I can make this worth your time.</p>
 </div>
+
 <div style="display:grid; gap:24px;">
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Your Name *</label>
-<input name="name" placeholder="First and last name" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Email *</label>
-<input name="email" placeholder="you@example.com" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="email"/>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Phone</label>
-<input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="tel"/>
-</div>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are you looking to do?</label>
-<p style="font-size:13px; color:var(--muted); margin:0 0 10px;">Pick what you're building and I'll follow up to confirm details and quote it.</p>
-<div style="display:grid; gap:10px;">
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="recording" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Recording Session</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="rehearsal" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Band Rehearsal Capture</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="podcast" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Podcast Production</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="mobile" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Mobile Recording</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="buyout" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Studio Buyout + Custom Build (Tiny Desk-inspired performance capture)</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="fullbuild" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Full Build (Producer-Led)</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="artistfeature" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Artist Feature</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="specialized[]" type="checkbox" value="notsure" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Not sure yet</span>
-</label>
-</div>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are you working on? (1-2 sentences) *</label>
-<textarea name="interest" placeholder="Song, EP, band project, podcast, etc." required="" rows="3" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What do you want the plan to help you decide? *</label>
-<p style="font-size:13px; color:var(--muted); margin:0 0 10px;">Choose all that apply</p>
-<div style="display:grid; gap:10px;">
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="plan_help[]" type="checkbox" value="approach" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>How to record it (approach + sessions)</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="plan_help[]" type="checkbox" value="gear" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>What gear / instruments I need</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="plan_help[]" type="checkbox" value="timeline" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Timeline + deadlines</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="plan_help[]" type="checkbox" value="budget" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Budget + options</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="plan_help[]" type="checkbox" value="other" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Other</span>
-</label>
-<input name="plan_help_other" placeholder="Tell me more..." style="display:none; width:100%; padding:12px 16px; background:var(--field-bg); border:2px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; box-sizing:border-box; margin-top:2px;" type="text"/>
-</div>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Where are you starting from? *</label>
-<select name="starting_from" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="brand-new">Brand new / first time recording</option>
-<option value="demos">I have demos or voice memos</option>
-<option value="stems">I have stems or session files</option>
-<option value="returning">We've recorded before, want a better plan</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Ideal timeframe</label>
-<select name="timeframe" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="asap">ASAP (next 1-2 weeks)</option>
-<option value="this-month">This month</option>
-<option value="1-3-months">Next 1-3 months</option>
-<option value="no-rush">No rush</option>
-</select>
-</div>
-<!-- Referral -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone?</label>
-<input name="referral_name" placeholder="Name of person who referred you (if any)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<!-- Discount Code -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code?</label>
-<input name="discount_code" placeholder="Enter code (if you have one)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<!-- How did you hear about us -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">How did you hear about us?</label>
-<select name="hear_about" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="word-of-mouth">Word of mouth</option>
-<option value="google">Google search</option>
-<option value="instagram">Instagram</option>
-<option value="yelp">Yelp</option>
-<option value="referral">Referral / friend</option>
-<option value="repeat">I've been here before</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? (optional)</label>
-<textarea name="notes" placeholder="Deadlines, references, must-haves, constraints - anything helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
-</div>
-<div style="margin-top:16px;">
-<button class="intake-submit-btn" style="width:100%; padding:14px 28px; background:#00c6ff; border:none; border-radius:12px; color:#000; font-weight:500; font-size:15px; cursor:pointer; transition:all 0.2s; box-shadow:0 4px 20px rgba(0,198,255,0.4);" type="submit">Submit and Schedule Now →</button>
-</div>
+
+  <!-- Name / Email / Phone -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Your Name *</label>
+    <input name="name" placeholder="First and last name" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div>
+      <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Email *</label>
+      <input name="email" placeholder="you@example.com" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="email"/>
+    </div>
+    <div>
+      <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Phone</label>
+      <input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="tel"/>
+    </div>
+  </div>
+
+  <!-- What are you looking to do — 2-column pill checkboxes -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:12px;">What are you looking to do?</label>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="recording"/><span>Recording Session</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="rehearsal"/><span>Band Rehearsal Capture</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="podcast"/><span>Podcast Production</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="mobile"/><span>Mobile Recording</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="buyout"/><span>Studio Buyout / Custom Build</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="fullbuild"/><span>Full Build (Producer-Led)</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="artistfeature"/><span>Artist Feature</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="photoshoot"/><span>Photography Shoot</span></label>
+      <label class="pill-check"><input name="specialized[]" type="checkbox" value="notsure"/><span>Not sure yet</span></label>
+    </div>
+  </div>
+
+  <!-- What are you working on -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are you working on? *</label>
+    <textarea name="interest" placeholder="Song, EP, band project, podcast, etc. — one or two sentences is plenty." required="" rows="3" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+  </div>
+
+  <!-- Ideal timeframe -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Ideal timeframe</label>
+    <select name="timeframe" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
+      <option value="">Select one...</option>
+      <option value="asap">ASAP (next 1–2 weeks)</option>
+      <option value="this-month">This month</option>
+      <option value="1-3-months">Next 1–3 months</option>
+      <option value="no-rush">No rush — just exploring</option>
+    </select>
+  </div>
+
+  <!-- Referral -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <input name="referral_name" placeholder="Name of person who referred you" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <!-- Discount Code -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <input name="discount_code" placeholder="Enter code if you have one" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <!-- Anything important -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <textarea name="notes" placeholder="Deadlines, references, budget range, must-haves — anything that helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+  </div>
+
+  <div style="margin-top:8px;">
+    <button class="intake-submit-btn" style="width:100%; padding:14px 28px; background:#00c6ff; border:none; border-radius:12px; color:#000; font-weight:500; font-size:15px; cursor:pointer; transition:all 0.2s; box-shadow:0 4px 20px rgba(0,198,255,0.4);" type="submit">Submit and Schedule Now →</button>
+  </div>
+
 </div>
 </form>
 <!-- Launch Intro Form -->
 <form action="/" class="intake-form" data-netlify="true" id="launchForm" method="POST" name="launch-intro-intake" data-netlify-honeypot="bot-field" style="display:none; max-width:700px; margin:0 auto; background:rgba(255,255,255,0.05); backdrop-filter:blur(20px); border:none; border-radius:24px; padding:48px 40px;">
 <input name="form-name" type="hidden" value="launch-intro-intake"/>
-<p class="hidden"><label>Don’t fill this out: <input name="bot-field"/></label></p>
+<p class="hidden"><label>Don't fill this out: <input name="bot-field"/></label></p>
 <div aria-atomic="true" aria-live="polite" class="form-status"></div>
+
 <div style="margin-bottom:24px;">
-<button class="intake-back-btn back-btn" type="button">← Back</button>
+  <button class="intake-back-btn back-btn" type="button">← Back</button>
 </div>
+
 <div style="text-align:center; margin-bottom:40px;">
-<h3 id="intakeServiceTitle" style="font-size:32px; font-weight:500; margin:0 0 12px; color:var(--text); letter-spacing:-0.02em;">Start with a Session</h3>
-<p id="intakeServiceSubtitle" style="font-size:16px; color:var(--muted); margin:0;">Let’s make sure this session sets you up for success.</p>
-<input id="intakeServiceKey" name="service_key" type="hidden" value=""/>
+  <h3 id="intakeServiceTitle" style="font-size:32px; font-weight:500; margin:0 0 12px; color:var(--text); letter-spacing:-0.02em;">Start with a Session</h3>
+  <p id="intakeServiceSubtitle" style="font-size:16px; color:var(--muted); margin:0;">Let's make sure this session sets you up for success.</p>
+  <input id="intakeServiceKey" name="service_key" type="hidden" value=""/>
 </div>
+
 <div style="display:grid; gap:24px;">
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Your Name *</label>
-<input name="name" placeholder="First and last name" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Email *</label>
-<input name="email" placeholder="you@example.com" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="email"/>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Phone</label>
-<input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="tel"/>
-</div>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are we working on? (1-2 sentences) *</label>
-<textarea name="project" placeholder="Song, EP, band project, podcast - what’s the vision?" required="" rows="3" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What do you want to walk out with? *</label>
-<textarea name="walk_out_with" placeholder="A rough demo? Polished vocals? A full track? Just an idea of what’s possible?" required="" rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Have you recorded before? *</label>
-<select name="experience" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="no">No, first time</option>
-<option value="some">Some experience</option>
-<option value="yes">Yes</option>
-<option value="experienced">Well experienced</option>
-</select>
-</div>
-<!-- Added Interests (optional) -->
-<fieldset style="border:1px solid var(--border); border-radius:14px; padding:18px 20px 14px; margin:0;">
-<legend style="font-size:13px; font-weight:500; color:var(--muted); padding:0 8px; letter-spacing:0.02em;">Added Interests (optional)</legend>
-<div style="display:grid; gap:12px;">
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="coffee" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Coffee preparation (espresso or pour-over)</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="photo" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Session photos or photo package</span>
-</label>
-<label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
-<input name="ride" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
-<span>Local pickup ride (case-by-case)</span>
-</label>
-</div>
-</fieldset>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Comfortable budget range (helps me recommend options)</label>
-<select name="budget" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="under-200">Under $200</option>
-<option value="200-400">$200 - $400</option>
-<option value="400-800">$400 - $800</option>
-<option value="800-1500">$800 - $1,500</option>
-<option value="1500+">$1,500+</option>
-<option value="not-sure">Not sure yet</option>
-</select>
-</div>
-<!-- Referral -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone?</label>
-<input name="referral_name" placeholder="Name of person who referred you (if any)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<!-- Discount Code -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code?</label>
-<input name="discount_code" placeholder="Enter code (if you have one)" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
-</div>
-<!-- How did you hear about us -->
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">How did you hear about us?</label>
-<select name="hear_about" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
-<option value="">Select one...</option>
-<option value="word-of-mouth">Word of mouth</option>
-<option value="google">Google search</option>
-<option value="instagram">Instagram</option>
-<option value="yelp">Yelp</option>
-<option value="referral">Referral / friend</option>
-<option value="repeat">I've been here before</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div>
-<label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? (optional)</label>
-<textarea name="notes" placeholder="Deadlines, references, must-haves - anything helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
-</div>
-<div class="terms-row" style="display:flex; align-items:flex-start; gap:10px; margin-top:8px;">
-<input name="terms" required="" style="width:18px; height:18px; margin-top:2px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;" type="checkbox"/>
-<label style="font-size:14px; color:var(--muted); margin:0; cursor:pointer;">I agree to the <a class="terms-link" href="#" style="color:var(--accent); text-decoration:underline;">Terms &amp; Conditions</a></label>
-</div>
-<div style="margin-top:16px;">
-<button class="intake-submit-btn" style="width:100%; padding:14px 28px; background:#00c6ff; border:none; border-radius:12px; color:#000; font-weight:500; font-size:15px; cursor:pointer; transition:all 0.2s; box-shadow:0 4px 20px rgba(0,198,255,0.4);" type="submit">Submit and Schedule Now →</button>
-</div>
+
+  <!-- Name / Email / Phone -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Your Name *</label>
+    <input name="name" placeholder="First and last name" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div>
+      <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Email *</label>
+      <input name="email" placeholder="you@example.com" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="email"/>
+    </div>
+    <div>
+      <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Phone</label>
+      <input name="phone" placeholder="(555) 123-4567" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="tel"/>
+    </div>
+  </div>
+
+  <!-- What are we working on -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What are we working on? *</label>
+    <textarea name="project" placeholder="Song, EP, band project, podcast — what's the vision?" required="" rows="3" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+  </div>
+
+  <!-- What do you want to walk out with -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">What do you want to walk out with? *</label>
+    <textarea name="walk_out_with" placeholder="A rough demo? Polished vocals? A full track? Just an idea of what's possible?" required="" rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+  </div>
+
+  <!-- Experience -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Have you recorded before? *</label>
+    <select name="experience" required="" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
+      <option value="">Select one...</option>
+      <option value="no">No, first time</option>
+      <option value="some">Some experience</option>
+      <option value="yes">Yes</option>
+      <option value="experienced">Well experienced</option>
+    </select>
+  </div>
+
+  <!-- Added Interests -->
+  <fieldset style="border:1px solid var(--border); border-radius:14px; padding:18px 20px 14px; margin:0;">
+    <legend style="font-size:13px; font-weight:500; color:var(--muted); padding:0 8px; letter-spacing:0.02em;">Added Interests (optional)</legend>
+    <div style="display:grid; gap:12px;">
+      <label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+        <input name="coffee" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+        <span>Coffee preparation (espresso or pour-over)</span>
+      </label>
+      <label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+        <input name="photo" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+        <span>Session photos or photo package</span>
+      </label>
+      <label style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text); cursor:pointer;">
+        <input name="ride" type="checkbox" style="width:18px; height:18px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;"/>
+        <span>Local pickup ride (case-by-case)</span>
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- Budget -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Comfortable budget range <span style="font-weight:400; color:var(--muted);">(helps me recommend options)</span></label>
+    <select name="budget" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box; cursor:pointer;">
+      <option value="">Select one...</option>
+      <option value="under-200">Under $200</option>
+      <option value="200-400">$200 – $400</option>
+      <option value="400-800">$400 – $800</option>
+      <option value="800-1500">$800 – $1,500</option>
+      <option value="1500+">$1,500+</option>
+      <option value="not-sure">Not sure yet</option>
+    </select>
+  </div>
+
+  <!-- Referral -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Were you referred by someone? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <input name="referral_name" placeholder="Name of person who referred you" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <!-- Discount Code -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Discount code? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <input name="discount_code" placeholder="Enter code if you have one" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; box-sizing:border-box;" type="text"/>
+  </div>
+
+  <!-- Anything important -->
+  <div>
+    <label style="display:block; font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px;">Anything important to know? <span style="font-weight:400; color:var(--muted);">(optional)</span></label>
+    <textarea name="notes" placeholder="Deadlines, references, must-haves — anything helps." rows="2" style="width:100%; padding:14px 18px; background:var(--field-bg); border:2px solid var(--border); border-radius:12px; color:var(--text); font-size:15px; transition:all 0.2s; resize:vertical; box-sizing:border-box; font-family:inherit;"></textarea>
+  </div>
+
+  <!-- Terms -->
+  <div class="terms-row" style="display:flex; align-items:flex-start; gap:10px; margin-top:8px;">
+    <input name="terms" required="" style="width:18px; height:18px; margin-top:2px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;" type="checkbox"/>
+    <label style="font-size:14px; color:var(--muted); margin:0; cursor:pointer;">I agree to the <a class="terms-link" href="#" style="color:var(--accent); text-decoration:underline;">Terms &amp; Conditions</a></label>
+  </div>
+
+  <div style="margin-top:16px;">
+    <button class="intake-submit-btn" style="width:100%; padding:14px 28px; background:#00c6ff; border:none; border-radius:12px; color:#000; font-weight:500; font-size:15px; cursor:pointer; transition:all 0.2s; box-shadow:0 4px 20px rgba(0,198,255,0.4);" type="submit">Submit and Schedule Now →</button>
+  </div>
+
 </div>
 </form>
 </div>
@@ -934,7 +883,7 @@
 <p class="gallery-narrative" data-reveal="">Purpose-built over five years of real sessions. Designed space, custom RGB lighting, coffee bar between takes (or before getting started), modular curtains for isolation - an immersive creative space.</p>
 <div class="gallery-layout">
 <div aria-label="View studio photo in full screen" class="photo-hero" id="photoHero" role="button" tabindex="0">
-<img alt="Studio San Francisco main room" decoding="async" id="photoHeroImg" src="images/studio-1.jpg"/>
+<img alt="Studio San Francisco main room" decoding="async" fetchpriority="high" id="photoHeroImg" src="images/studio-1.jpg"/>
 <div aria-hidden="true" class="photo-expand-hint">
 <span>🔍</span>
 <span>Click to expand</span>
@@ -1094,6 +1043,7 @@ Coffee bar on-site - pour-overs between takes to reset and listen back. Mini fri
     </div>
 
     <div class="sp-controls">
+      <button class="sp-btn sp-btn-shuffle" id="v5BtnShuffle" type="button" aria-label="Shuffle tracks" title="Shuffle tracks">&#8644;</button>
       <button class="sp-btn sp-btn-sm" id="spPrev" type="button" aria-label="Previous track">&#9198;</button>
       <button class="sp-btn sp-btn-play" id="spPlay" type="button" aria-label="Play">&#9654;</button>
       <button class="sp-btn sp-btn-sm" id="spNext" type="button" aria-label="Next track">&#9197;</button>
@@ -1101,11 +1051,6 @@ Coffee bar on-site - pour-overs between takes to reset and listen back. Mini fri
         <button class="sp-btn sp-btn-vol" id="spMute" type="button" aria-label="Mute">&#128266;</button>
         <input class="sp-vol-slider" id="spVol" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Volume"/>
       </div>
-    </div>
-
-    <div class="sp-shuffle">
-      <span>or</span>
-      <button id="v5BtnShuffle" type="button">shuffle tracks &nbsp;&#8644;</button>
     </div>
 
     <audio id="studioAudio" preload="none"></audio>
@@ -1533,7 +1478,4 @@ This policy protects reserved time and preparation work. Sessions are built arou
   </div>
 </div>
 <!-- External JavaScript -->
-<script src="scripts.js"></script>
-
-</body>
-</html>
+<s
